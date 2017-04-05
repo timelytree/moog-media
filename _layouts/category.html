@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<div class="post-list">
+  {% for post in site.categories[page.category] %}
+    <li class="post-link">
+      <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      <ul class="categories">
+        <li class="category-link">Categories: </li>
+        {% for category in post.categories %}
+          <li class="category-link"><a href="/category/{{ category | prepend: site.baseurl }}">{{ category }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</div>
