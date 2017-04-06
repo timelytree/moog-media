@@ -1,0 +1,18 @@
+{
+  "name": "moog-media",
+  "devDependencies": {
+    "bower": "*",
+    "browser-sync": "^2.17.5",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "*",
+    "gulp-if": "*",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "*",
+    "gulp-prettify": "*",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "*",
+    "gulp-uglify": "^2.0.0",
+    "gulp-useref": "*"
+  }
+}
