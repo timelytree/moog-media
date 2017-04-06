@@ -7,6 +7,7 @@
 // sycamore
 var init = {
   global: {
+    googleANALYTICS: 'googleANALYTICS',
     imagesLOADED: 'imagesLOADED',
     preLOADER: 'preLOADER',
     canvasINIT: 'canvasINIT'
@@ -37,13 +38,25 @@ globalVARS = {
   "imagesLOADED": false
 }
 
+function googleANALYTICS() {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  var host = window.location.host;
+  if (host != 'localhost:4000') {
+    ga('create', 'UA-92177503-1', 'auto');
+    ga('send', 'pageview');
+  }
+}
+
 function preLOADER() {
   var interval = null,
       preLOADER = E('preLOADER'),
       video = E('landingVIDEO');
 
   interval = window.setInterval(function() {
-    console.log(globalVARS.videoLOADED, globalVARS.imagesLOADED);
     if ((w.Width > 1000) && (globalVARS.videoLOADED) && (globalVARS.imagesLOADED)) {
       remC(preLOADER, 'active');
       video.play();
@@ -89,6 +102,11 @@ function videoINIT() {
 ///////////////////////////////////////////////////////////////// CORE functions
 //------------------------------------------------------------------------------
 function sectionINT() {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
   var sections = cE('contentSECTION'),
       navBUTTONS = cE('navB'),
       currSECTION = E('homeSECTION'),
@@ -96,6 +114,7 @@ function sectionINT() {
       canvas = E('animCANVAS'),
       wrapper = cE('wrapper')[0],
       video = E('landingVIDEO'),
+      host = window.location.host,
       timer = null,
       timer2 = null;
 
@@ -117,10 +136,25 @@ function sectionINT() {
     }
   }
 
+  function updateGoogleAnalytics(id) {
+    var page = null;
+    switch (id) {
+      case 'homeB': page = '/'; break;
+      case 'aboutB': page = '/about.html'; break;
+      case 'lookbookB': page = '/lookbook.html'; break;
+    }
+    if (host != 'localhost:4000') {
+      ga('create', 'UA-92177503-1', 'auto');
+      ga('set', 'page', page);
+      ga('send', 'pageview');
+    }
+  }
+
   for (var i = 0; i < navBUTTONS.length; i++) {
     navBUTTONS[i].onclick = function() {
       var num = gA(this, 'num');
-      animSECTION(this.id, num)
+      animSECTION(this.id, num);
+      updateGoogleAnalytics(this.id);
     }
   }
 }
