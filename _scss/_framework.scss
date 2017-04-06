@@ -126,6 +126,45 @@ a {
 
 ///////////////////////////////////////////////////////////////// Other elements
 //------------------------------------------------------------------------------
+@include keyframes(fadeCYCLE) {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#preLOADER {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000000;
+  background: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: 150ms;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  img {
+    width: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-animation: fadeCYCLE 750ms linear infinite;
+    -moz-animation:    fadeCYCLE 750ms linear infinite;
+    -o-animation:      fadeCYCLE 750ms linear infinite;
+    animation:         fadeCYCLE 750ms linear infinite;
+    -webkit-animation-direction: alternate;
+    -moz-animation-direction:    alternate;
+    -o-animation-direction:      alternate;
+    animation-direction:         alternate;
+  }
+}
+
 #landscapeIND {
   display: none;
   position: fixed;
@@ -271,7 +310,6 @@ a {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  opacity: 0;
   transition: 250ms;
 }
 

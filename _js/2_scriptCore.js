@@ -7,6 +7,8 @@
 // sycamore
 var init = {
   global: {
+    imagesLOADED: 'imagesLOADED',
+    preLOADER: 'preLOADER',
     canvasINIT: 'canvasINIT'
   },
   desktop: {
@@ -30,6 +32,29 @@ var core = {
 
 ///////////////////////////////////////////////////////////////// INIT functions
 //------------------------------------------------------------------------------
+globalVARS = {
+  "videoLOADED": false,
+  "imagesLOADED": false
+}
+
+function preLOADER() {
+  var interval = null,
+      preLOADER = E('preLOADER'),
+      video = E('landingVIDEO');
+
+  interval = window.setInterval(function() {
+    console.log(globalVARS.videoLOADED, globalVARS.imagesLOADED);
+    if ((w.Width > 1000) && (globalVARS.videoLOADED) && (globalVARS.imagesLOADED)) {
+      remC(preLOADER, 'active');
+      video.play();
+      clearInterval(interval);
+    } else if ((w.Width < 1000) && (globalVARS.imagesLOADED)) {
+      remC(preLOADER, 'active');
+      clearInterval(interval);
+    }
+  }, 100);
+}
+
 function canvasINIT() {
   var canvas = E('animCANVAS');
   if (w.Width > 414) {
@@ -39,28 +64,26 @@ function canvasINIT() {
     canvas.width = w.Width - 30;
     canvas.height = w.Height - 30;
   }
-
   canvasApp();
+}
+
+function imagesLOADED() {
+  imagesLoaded( cE('content')[0], function() {
+    globalVARS.imagesLOADED = true;
+  });
 }
 
 function videoINIT() {
   var video = E('landingVIDEO'),
+      preLOADER = null,
       interval = null;
 
   interval = window.setInterval(function() {
     if (video.readyState > 3) {
       clearInterval(interval);
-      video.play();
-      video.style.opacity = 1;
+      globalVARS.videoLOADED = true;
     }
   }, 100);
-
-  // var msnry = new Masonry( E('lookbookSECTION'), {
-  //   // options
-  //   itemSelector: '.lookbookIMG',
-  //   // columnWidth: 200,
-  //   percentPosition: true
-  // });
 }
 
 ///////////////////////////////////////////////////////////////// CORE functions

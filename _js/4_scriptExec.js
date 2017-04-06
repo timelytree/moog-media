@@ -1,5 +1,10 @@
 ///////////////////////////////////// code execution and execution order control
 //------------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+  run(init.global.imagesLOADED);
+  run(init.global.preLOADER);
+});
+
 window.onload = function() {
   getWindowDimensions();
   recCurrPage();
