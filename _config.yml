@@ -5,7 +5,7 @@ description: We are a collective of professional artists and innovators that eng
 baseurl: ""
 url: "www.moogmedia.ca"
 github_username:  timelytree
-# include: ["_pages", "_categories", "_demos"]
+include: ["_pages", "_projects"]
 permalink: /:title
 
 collections:

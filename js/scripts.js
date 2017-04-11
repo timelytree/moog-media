@@ -419,8 +419,6 @@ Fly = function(e, p, d) {
 var init = {
   global: {
     googleANALYTICS: 'googleANALYTICS',
-    imagesLOADED: 'imagesLOADED',
-    preLOADER: 'preLOADER',
     canvasINIT: 'canvasINIT'
   },
   desktop: {
@@ -431,7 +429,7 @@ var init = {
 
 var core = {
   global: {
-    sectionINT: 'sectionINT'
+    preloaderANIM: 'preloaderANIM'
   },
   desktop: {
 
@@ -462,23 +460,6 @@ function googleANALYTICS() {
   }
 }
 
-function preLOADER() {
-  var interval = null,
-      preLOADER = E('preLOADER'),
-      video = E('landingVIDEO');
-
-  interval = window.setInterval(function() {
-    if ((w.Width > 1000) && (globalVARS.videoLOADED) && (globalVARS.imagesLOADED)) {
-      remC(preLOADER, 'active');
-      video.play();
-      clearInterval(interval);
-    } else if ((w.Width < 1000) && (globalVARS.imagesLOADED)) {
-      remC(preLOADER, 'active');
-      clearInterval(interval);
-    }
-  }, 100);
-}
-
 function canvasINIT() {
   var canvas = E('animCANVAS');
   if (w.Width > 414) {
@@ -491,83 +472,43 @@ function canvasINIT() {
   canvasApp();
 }
 
-function imagesLOADED() {
+function videoINIT() {
+  var preLOADER = E('preLOADER'),
+      video = E('landingVIDEO');
+      interval1 = null,
+      interval2 = null;
+
+  interval2 = window.setInterval(function() {
+    if ((w.Width > 1000) && (globalVARS.videoLOADED) && (globalVARS.imagesLOADED)) {
+      remC(preLOADER, 'active');
+      video.play();
+      clearInterval(interval2);
+    } else if ((w.Width < 1000) && (globalVARS.imagesLOADED)) {
+      remC(preLOADER, 'active');
+      clearInterval(interval2);
+    }
+  }, 100);
+
+  interval1 = window.setInterval(function() {
+    if (video.readyState > 3) {
+      clearInterval(interval1);
+      globalVARS.videoLOADED = true;
+    }
+  }, 100);
+
   imagesLoaded( cE('content')[0], function() {
     globalVARS.imagesLOADED = true;
   });
 }
 
-function videoINIT() {
-  var video = E('landingVIDEO'),
-      preLOADER = null,
-      interval = null;
-
-  interval = window.setInterval(function() {
-    if (video.readyState > 3) {
-      clearInterval(interval);
-      globalVARS.videoLOADED = true;
-    }
-  }, 100);
-}
-
 ///////////////////////////////////////////////////////////////// CORE functions
 //------------------------------------------------------------------------------
-function sectionINT() {
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+function preloaderANIM() {
+  var preLOADER = E('preLOADER');
 
-  var sections = cE('contentSECTION'),
-      navBUTTONS = cE('navB'),
-      currSECTION = E('homeSECTION'),
-      currB = E('homeB'),
-      canvas = E('animCANVAS'),
-      wrapper = cE('wrapper')[0],
-      video = E('landingVIDEO'),
-      host = window.location.host,
-      timer = null,
-      timer2 = null;
-
-  function animSECTION(id, num) {
-    timer = window.setTimeout(function() { currSECTION.scrollTop = 0; clearTimeout(timer); }, 250);
-    if (currB.id == id) { return false; }
-    else if (id != 'homeB') {
-      remC(currSECTION, 'activeSECTION');
-      currSECTION = sections[num]; currB = navBUTTONS[num];
-      delayAddC(currSECTION, 'activeSECTION', 250);
-      timer2 = window.setTimeout(function() { video.pause(); clearTimeout(timer); }, 250);
-      addC(wrapper, 'theme');
-    } else if (id == 'homeB') {
-      remC(currSECTION, 'activeSECTION');
-      currSECTION = sections[num]; currB = navBUTTONS[num];
-      delayAddC(currSECTION, 'activeSECTION', 250);
-      if (w.Width > 1024) { video.play(); }
-      delayRemC(wrapper, 'theme', 250);
-    }
-  }
-
-  function updateGoogleAnalytics(id) {
-    var page = null;
-    switch (id) {
-      case 'homeB': page = '/'; break;
-      case 'aboutB': page = '/about.html'; break;
-      case 'lookbookB': page = '/lookbook.html'; break;
-    }
-    if (host != 'localhost:4000') {
-      ga('create', 'UA-92177503-1', 'auto');
-      ga('set', 'page', page);
-      ga('send', 'pageview');
-    }
-  }
-
-  for (var i = 0; i < navBUTTONS.length; i++) {
-    navBUTTONS[i].onclick = function() {
-      var num = gA(this, 'num');
-      animSECTION(this.id, num);
-      updateGoogleAnalytics(this.id);
-    }
-  }
+  imagesLoaded( cE('content')[0], function() {
+    remC(preLOADER, 'active');
+  });
 }
 
 //
@@ -589,12 +530,27 @@ function sectionINT() {
 //------------------------------------------------------------------------------
 function globalInit() {
   run(init.global.googleANALYTICS);
-  run(init.global.canvasINIT);
-  run(core.global.sectionINT);
 }
 
 function desktop() {
-  run(init.desktop.videoINIT);
+  switch (p.Current) {
+    case 'homePAGE':
+      run(init.desktop.videoINIT);
+      break;
+    case 'aboutPAGE':
+      run(core.global.preloaderANIM);
+      run(init.global.canvasINIT);
+    break;
+    case 'lookbookPAGE':
+      run(core.global.preloaderANIM);
+      run(init.global.canvasINIT);
+    break;
+    case 'projectsPAGE':
+      run(core.global.preloaderANIM);
+      run(init.global.canvasINIT);
+      break;
+    case 'projectPAGE': run(core.global.preloaderANIM); break;
+  }
 }
 
 function mobileA() {
@@ -603,16 +559,11 @@ function mobileA() {
 ///////////////////////////////////// code execution and execution order control
 //------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
-  run(init.global.imagesLOADED);
-  run(init.global.preLOADER);
-});
-
-window.onload = function() {
   getWindowDimensions();
   recCurrPage();
   globalInit();
   if ( w.Width > 1000 ) { desktop(); }
-}
+});
 
 window.onresize = function() {
   var timeout = window.setTimeout(function() {
@@ -623,5 +574,7 @@ window.onresize = function() {
 }
 
 function resizeScripts() {
-  initMap();
+  switch (p.Current) {
+    case 'aboutPAGE': initMap(); break;
+  }
 }

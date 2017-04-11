@@ -1,29 +1,7 @@
 ---
 layout: default
 ---
-<div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <div class="buttonBar">
-      {% if page.demoURL %}
-        <a class="button imgRight" href ="{{ page.demoURL }}">
-          View Demo
-          <img src="{{ site.baseurl }}/images/icons/chevron_right_black.svg" />
-        </a>
-      {% endif %}
-      {% if page.github %}
-        <a class="button imgLeft" href="https://github.com/timelytree/{{ page.github }}" target="_blank">
-          <img src="{{ site.baseurl }}/images/icons/github_icon_black.svg" />
-          github
-        </a>
-      {% endif %}
-    </div>
-    <div class="post-date">{{ page.date | date: "%b %-d, %Y" }}</div>
-  </header>
-
-  <article class="post-content">
-    {{ content }}
-  </article>
-
+<div id="{{ page.shortcode }}PAGE">
+  {{ content }}
 </div>

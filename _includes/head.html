@@ -13,5 +13,7 @@
   <link rel="stylesheet" href="{{ "/css/styles.css" | prepend: site.baseurl }}">
   <!--///////////////////////////////////////////////////////// JAVASCRIPTS  -->
   <script type="text/javascript" src="{{ "/js/scripts.js" | prepend: site.baseurl }}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb8pawdRAkMMvUB93epIuyCT14MMQf5I8&callback=initMap" async defer></script>
+  {% if page.id == 'aboutPAGE' %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb8pawdRAkMMvUB93epIuyCT14MMQf5I8&callback=initMap" async defer></script>
+  {% endif %}
 </head>

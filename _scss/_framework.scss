@@ -97,7 +97,7 @@ a {
   left: 50px;
   width: calc(100% - 100px);
   height: calc(100% - 100px);
-  border: 1px solid white;
+  border: 1px solid black;
 }
 
 .content {
@@ -105,23 +105,6 @@ a {
   width: calc(100% - 51px);
   height: 100%;
   float: left;
-}
-
-.theme {
-  #landingVIDEO, #landingGIF {
-    opacity: 0 !important;
-  }
-  #animCANVAS {
-    opacity: 1 !important;
-    transition: 2500ms !important;
-    transition-delay: 250ms !important;
-  }
-  .console {
-    border-color: black !important;
-  }
-  #nav {
-    border-color: black !important;
-  }
 }
 
 ///////////////////////////////////////////////////////////////// Other elements
@@ -186,12 +169,12 @@ a {
 #nav {
   float: left;
   width: 50px;
-  border-right: 1px solid white;
+  border-right: 1px solid black;
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
   position: relative;
   transition: 250ms;
-  .navB, .sharingB {
+  .navB, .sharingB, .staticNavB {
     width: 100%;
     height: 50px;
     position: relative;
@@ -277,6 +260,7 @@ a {
   #homeB:before { content: 'HOME'; }
   #aboutB:before { content: 'WHO WE ARE'; }
   #lookbookB:before { content: 'VIEW LOOK BOOK'; }
+  #projectsB:before { content: 'PROJECTS'; }
   #instagramB:before { content: 'INSTAGRAM'; }
   #pinterestB:before { content: 'INSPIRATION'; }
   #vimeoB:before { content: 'VIDEOS'; }
@@ -292,12 +276,12 @@ a {
   left: 0;
   background: white;
   z-index: -1;
-  opacity: 0;
   transition: 250ms;
   /*transition-delay: 250ms;*/
 }
 
 #landingVIDEO {
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -330,7 +314,7 @@ a {
 }
 .contentSECTION {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   width: calc(100% + 25px);
   height: 100%;
@@ -372,7 +356,7 @@ a {
     border-right: 1px solid black;
   }
   #aboutCONTENT {
-    padding: 25px 50px 25px calc(50% + 12.5px);
+    padding: 25px 50px 25px 50%;
     padding-right: 50px;
     overflow-y: scroll;
     position: absolute;
@@ -445,6 +429,51 @@ a {
     }
     &.imgFULL {
       width: 100%;
+    }
+  }
+}
+
+.projectLIST {
+  @include flex-c;
+  width: 100%;
+  height: 100%;
+  .projectLINK {
+    width: 280px;
+    margin: 25px auto;
+    img {
+      width: 100%;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+#homePAGE {
+  .console {
+    border-color: white;
+  }
+  #nav {
+    border-color: white;
+  }
+  #landingVIDEO {
+    display: block;
+  }
+  #animCANVAS {
+    display: none;
+  }
+}
+
+#verslalunePAGE {
+  width: calc(100% + 25px);
+  height: 100%;
+  padding: 25px;
+  padding-right: 50px;
+  overflow-y: scroll;
+  img {
+    width: 100%;
+    margin-bottom: 25px;
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
