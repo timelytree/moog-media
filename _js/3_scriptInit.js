@@ -2,6 +2,22 @@
 //------------------------------------------------------------------------------
 function globalInit() {
   run(init.global.googleANALYTICS);
+  switch (p.Current) {
+    case 'aboutPAGE':
+      run(core.global.preloaderANIM);
+    break;
+    case 'lookbookPAGE':
+      run(core.global.preloaderANIM);
+    break;
+    case 'projectsPAGE':
+      run(core.global.preloaderANIM);
+      break;
+    case 'projectPAGE':
+      run(core.global.preloaderANIM);
+      run(core.global.sliderINIT);
+      // run(core.global.sliderTOGGLE);
+    break;
+  }
 }
 
 function desktop() {
@@ -21,9 +37,16 @@ function desktop() {
       run(core.global.preloaderANIM);
       run(init.global.canvasINIT);
       break;
-    case 'projectPAGE': run(core.global.preloaderANIM); break;
+    case 'projectPAGE':
+      run(core.global.preloaderANIM);
+    break;
   }
 }
 
-function mobileA() {
+function mobile() {
+  switch (p.Current) {
+    case 'homePAGE':
+      run(core.global.preloaderANIM);
+    break;
+  }
 }

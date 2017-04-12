@@ -18,7 +18,9 @@ var init = {
 
 var core = {
   global: {
-    preloaderANIM: 'preloaderANIM'
+    preloaderANIM: 'preloaderANIM',
+    sliderINIT: 'sliderINIT',
+    sliderTOGGLE: 'sliderTOGGLE'
   },
   desktop: {
 
@@ -98,6 +100,36 @@ function preloaderANIM() {
   imagesLoaded( cE('content')[0], function() {
     remC(preLOADER, 'active');
   });
+}
+
+function sliderINIT() {
+  var slider = cE('slider')[0];
+
+  if (slider) {
+    $('.slides').slick({
+      infinite: true,
+      prevArrow: $('#prevARROW'),
+      nextArrow: $('#nextARROW')
+    });
+  }
+}
+
+function sliderTOGGLE() {
+  var slider = cE('slider')[0],
+      openB = cE('sliderOpenB')[0],
+      closeB = cE('sliderCloseB')[0];
+
+  function toggle(dir) {
+    switch (dir) {
+      case 'on': addC(slider, 'active'); break;
+      case 'off': remC(slider, 'active'); break;
+    }
+  }
+
+  if (slider) {
+    openB.onclick = function() { toggle('on'); }
+    closeB.onclick = function() { toggle('off'); }
+  }
 }
 
 //

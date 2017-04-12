@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   recCurrPage();
   globalInit();
   if ( w.Width > 1000 ) { desktop(); }
+  if ( w.Width < 1000 ) { mobile(); }
 });
 
 window.onresize = function() {

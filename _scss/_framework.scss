@@ -448,6 +448,68 @@ a {
   }
 }
 
+.arrow {
+  @include flex-c;
+  width: 50px;
+  height: 50px;
+  z-index: 100;
+  cursor: pointer;
+  transition: 150ms;
+  &:hover {
+    transition: 150ms;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.slider {
+  @include flex-r;
+  width: 100%;
+  height: calc(100vh - 100px);
+  background: white;
+  float: left;
+  margin-bottom: 25px;
+  transition: 150ms;
+}
+
+.slick-slider {
+  height: 100%;
+  width: calc(100% - 100px);
+  .slick-list {
+    height: 100%;
+    .slick-track {
+      height: 100%;
+      .slick-slide {
+        outline: 0;
+        overflow: hidden;
+      }
+      img {
+        height: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.videoWRAPPER {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+  width: 100%;
+}
+.videoWRAPPER iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  border: 0;
+}
+
 #homePAGE {
   .console {
     border-color: white;
@@ -463,18 +525,60 @@ a {
   }
 }
 
-#verslalunePAGE {
-  width: calc(100% + 25px);
-  height: 100%;
-  padding: 25px;
-  padding-right: 50px;
-  overflow-y: scroll;
-  img {
-    width: 100%;
+.projectCONTENT {
+  section {
+    width: calc(100vw - 150px);
+    height: calc(100vh - 100px);
     margin-bottom: 25px;
+    padding: 25px;
     &:last-child {
       margin-bottom: 0;
     }
+    &.logoSECTION {
+      @include flex-c;
+      .projectLOGO {
+        margin: 0 auto;
+        margin-bottom: 50px;
+      }
+      p {
+        width: 300px;
+        margin-bottom: 25px;
+        text-align: justify;
+      }
+    }
+    &.videoSECTION {
+      padding-top: 0;
+      height: auto;
+    }
+    &.sliderSECTION {
+      padding: 0;
+    }
+  }
+}
+
+.projectSharingICONS {
+  @include flex-r;
+  margin-top: 25px;
+  a {
+    margin-right: 25px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  img {
+    height: 30px;
+  }
+}
+
+#projectPAGE {
+  .content {
+    overflow-y: scroll;
+  }
+}
+
+#verslalunePAGE {
+  #verslalune-logo {
+    width: 500px;
   }
 }
 

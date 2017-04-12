@@ -14,6 +14,8 @@ var config = {
 
 gulp.task('js', function() {
   return gulp.src([
+      config.jsPath + 'jquery-3.1.1.min.js',
+      config.jsPath + 'slick.min.js',
       config.jsPath + 'fractals.js',
       config.jsPath + 'googleMapINIT.js',
       config.jsPath + 'imagesLoaded.js',

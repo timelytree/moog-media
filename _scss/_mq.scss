@@ -5,29 +5,14 @@
     height: calc(100% - 50px);
   }
 
-  .theme {
-    #nav {
-      #sharingICONS {
-        .sharingB {
-          img {
-            &:first-child {
-              opacity: 0 !important;
-            }
-            &:last-child {
-              opacity: 1 !important;
-            }
-          }
-        }
-      }
+  #homePAGE {
+    #landingVIDEO {
+      display: none;
     }
-  }
 
-  #landingVIDEO {
-    display: none;
-  }
-
-  #landingGIF {
-    display: block;
+    #landingGIF {
+      display: block;
+    }
   }
 
   #nav {
@@ -36,8 +21,8 @@
     height: 50px;
     border-right: 0;
     border-bottom: 1px solid white;
-    .navB, .sharingB {
-      width: 33.333%;
+    .staticNavB, .sharingB {
+      width: 25%;
       height: 100%;
       float: left;
       outline: none;
@@ -142,35 +127,22 @@
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  #homePAGE {
+    #landingVIDEO {
+      display: none;
+    }
+
+    #landingGIF {
+      display: block;
+    }
+  }
+}
+
 @media only screen and (max-width: 770px) {
   .content {
     width: 100%;
     height: calc(100% - 50px);
-  }
-
-  .theme {
-    #nav {
-      #sharingICONS {
-        .sharingB {
-          img {
-            &:first-child {
-              opacity: 0 !important;
-            }
-            &:last-child {
-              opacity: 1 !important;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  #landingGIF {
-    display: block;
-  }
-
-  #landingVIDEO {
-    display: none;
   }
 
   #nav {
@@ -180,8 +152,8 @@
     height: 50px;
     border-right: 0;
     border-bottom: 1px solid white;
-    .navB, .sharingB {
-      width: 33.333%;
+    .staticNavB, .sharingB {
+      width: 25%;
       height: 100%;
       float: left;
       outline: none;
@@ -257,6 +229,19 @@
         max-width: 100%;
       }
     }
+  }
+
+  .projectCONTENT {
+    section {
+      width: calc(100vw - 100px);
+      &.sliderSECTION {
+        height: calc(50vh - 100px);
+      }
+    }
+  }
+
+  .slider {
+    height: 100%;
   }
 
   #homeSECTION {
@@ -404,6 +389,44 @@
           }
         }
       }
+    }
+  }
+
+  .projectCONTENT {
+    section {
+      width: 100%;
+      &.logoSECTION {
+        height: auto;
+        .projectLOGO {
+          margin-bottom: 25px;
+        }
+        p {
+          width: 100%;
+        }
+      }
+      &.sliderSECTION {
+        height: 50vh;
+      }
+    }
+  }
+
+  .slick-slider {
+    .slick-list {
+      .slick-track {
+        .slick-slide {
+          @include flex-c;
+        }
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  #verslalunePAGE {
+    #verslalune-logo {
+      width: 100%;
     }
   }
 }
