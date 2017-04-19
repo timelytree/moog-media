@@ -496,10 +496,15 @@ a {
 
 .videoWRAPPER {
 	position: relative;
-	padding-bottom: 56.25%;
+	padding-bottom: 32.25%;
 	padding-top: 25px;
 	height: 0;
-  width: 100%;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 .videoWRAPPER iframe {
 	position: absolute;
@@ -574,10 +579,7 @@ a {
   .content {
     overflow-y: scroll;
   }
-}
-
-#verslalunePAGE {
-  #verslalune-logo {
+  .projectLOGO {
     width: 500px;
   }
 }

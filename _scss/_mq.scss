@@ -270,6 +270,11 @@
       height: auto;
     }
   }
+
+  .videoWRAPPER {
+    width: 100%;
+    padding-bottom: 56.25%;
+  }
 }
 
 @media only screen and (max-device-width: 737px) {
@@ -424,8 +429,8 @@
     }
   }
 
-  #verslalunePAGE {
-    #verslalune-logo {
+  #projectPAGE {
+    .projectLOGO {
       width: 100%;
     }
   }

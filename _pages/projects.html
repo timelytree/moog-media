@@ -4,12 +4,12 @@ id: projectsPAGE
 permalink: /projects.html
 ---
 
-{% for page in site.pages %}
-  {% if page.pageTYPE == 'project' %}
-    <div class="projectLIST">
-      <a href="{{ page.permalink }}" class="projectLINK">
-        <img src="{{ site.baseUrl }}/assets/images/projects/{{ page.shortcode }}/logo.png" />
-      </a>
-    </div>
-  {% endif %}
-{% endfor %}
+<div class="projectLIST">
+  {% for page in site.pages %}
+    {% if page.pageTYPE == 'project' %}
+        <a href="{{ page.permalink }}" class="projectLINK">
+          <img src="{{ site.baseUrl }}/assets/images/projects/{{ page.shortcode }}/logo.png" />
+        </a>
+    {% endif %}
+  {% endfor %}
+</div>
