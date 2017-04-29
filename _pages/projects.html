@@ -5,6 +5,7 @@ permalink: /projects.html
 ---
 
 <div class="projectLIST">
+  <h6 class="subtitle">Projects</h6>
   {% for page in site.pages %}
     {% if page.pageTYPE == 'project' %}
         <a href="{{ page.permalink }}" class="projectLINK">
@@ -12,4 +13,11 @@ permalink: /projects.html
         </a>
     {% endif %}
   {% endfor %}
+  <h6 class="subtitle">In Development</h6>
+  <div class="developmentSECTION">
+    <p>Genesis</p>
+    <p>We are in development with Belladonna Productions in NYC, and the German broadcast network, ZDF Enterprises, on an original science fiction TV series, called Genesis. <a href="http://variety.com/2017/tv/news/zdf-enterprises-belladonna-productions-genesis-1202392550/" target="_blank">In the press</a>.</p>
+    <p>Displaced</p>
+    <p>We are also in development of an original documentary series called Displaced, in partnership with Libraries Without Borders and their Ideas Box, a Google-funded initiative to bring media labs into sensitive areas around the world. In addition, Displaced is being worked into a scripted series.</p>
+  </div>
 </div>

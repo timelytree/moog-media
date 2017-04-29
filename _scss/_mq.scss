@@ -341,6 +341,25 @@
     width: 90%;
   }
 
+  #projectsPAGE {
+    .content {
+      overflow-y: scroll;
+      padding: 15px;
+      padding-right: 45px;
+      width: calc(100% + 30px);
+    }
+  }
+
+  .projectLIST {
+    width: 100%;
+    .projectLINK, .developmentSECTION, .subtitle {
+      width: 100%;
+    }
+    .developmentSECTION a {
+      padding: 0;
+    }
+  }
+
   #homeSECTION {
     background: rgba(0, 0, 0, 0.15);
     #logo {

@@ -337,6 +337,32 @@ a {
   }
 }
 
+.subtitle {
+  width: 300px;
+  text-align: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.developmentSECTION {
+  width: 300px;
+  p {
+    margin-top: 25px;
+    /*text-align: justify;
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+    }*/
+  }
+  a {
+    display: inline-block;
+    color: $blue500;
+    padding: 2px 5px;
+    background: white;
+  }
+}
+
 #homeSECTION {
   overflow: hidden;
   h5, p {
@@ -434,9 +460,8 @@ a {
 }
 
 .projectLIST {
-  @include flex-c;
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  margin: 0 auto;
   .projectLINK {
     width: 280px;
     margin: 25px auto;
@@ -527,6 +552,13 @@ a {
   }
   #animCANVAS {
     display: none;
+  }
+}
+
+#projectsPAGE {
+  .content {
+    overflow-y: scroll;
+    padding: 50px 0;
   }
 }
 
