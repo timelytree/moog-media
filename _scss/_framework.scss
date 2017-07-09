@@ -359,8 +359,9 @@ a {
   a {
     display: inline-block;
     color: $blue500;
-    padding: 2px 5px;
+    // padding: 2px 5px;
     background: white;
+    margin-top: 5px;
   }
 }
 
@@ -461,8 +462,20 @@ a {
 }
 
 .projectLIST {
-  width: 300px;
-  margin: 0 auto;
+  @include display-flex;
+  @include flex-row;
+  @include flex-center;
+  section {
+    width: 300px;
+    &:first-child { margin-right: 25px; }
+    &:last-child { margin-left: 25px; }
+  }
+  .title {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
   .projectLINK {
     width: 280px;
     margin: 25px auto;

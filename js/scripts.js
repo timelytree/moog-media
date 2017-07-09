@@ -610,15 +610,15 @@ function desktop() {
       break;
     case 'aboutPAGE':
       run(core.global.preloaderANIM);
-      run(init.global.canvasINIT);
+      // run(init.global.canvasINIT);
     break;
     case 'lookbookPAGE':
       run(core.global.preloaderANIM);
-      run(init.global.canvasINIT);
+      // run(init.global.canvasINIT);
     break;
     case 'projectsPAGE':
       run(core.global.preloaderANIM);
-      run(init.global.canvasINIT);
+      // run(init.global.canvasINIT);
       break;
     case 'projectPAGE':
       run(core.global.preloaderANIM);

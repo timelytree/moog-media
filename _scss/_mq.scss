@@ -22,7 +22,7 @@
     border-right: 0;
     border-bottom: 1px solid white;
     .staticNavB, .sharingB {
-      width: 25%;
+      width: 33.3333%;
       height: 100%;
       float: left;
       outline: none;
@@ -153,7 +153,7 @@
     border-right: 0;
     border-bottom: 1px solid white;
     .staticNavB, .sharingB {
-      width: 25%;
+      width: 33.3333%;
       height: 100%;
       float: left;
       outline: none;
@@ -351,7 +351,12 @@
   }
 
   .projectLIST {
+    @include flex-c;
     width: 100%;
+    section {
+      width: 100%;
+      margin: 0 !important;
+    }
     .projectLINK, .developmentSECTION, .subtitle {
       width: 100%;
     }
