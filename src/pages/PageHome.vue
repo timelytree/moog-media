@@ -1,6 +1,7 @@
 <template>
   <div class="page-full" id="homePAGE">
     <img id="logo" src="../assets/images/logoMOOG_white.svg" />
+    <Navigation />
     <VideoTimer />
     <div class="videoWRAPPER">
       <div id="videoOVERLAY"></div>
@@ -12,11 +13,13 @@
 <script>
 import Methods from '../store/methods.js'
 import VideoTimer from '../components/VideoTimer.vue'
+import Navigation from '../components/Navigation.vue'
 
 export default {
   name: 'PageHome',
 
   components: {
+    Navigation,
     VideoTimer
   },
 

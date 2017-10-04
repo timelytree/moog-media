@@ -54,12 +54,12 @@ p, li, a, div {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: $blue700;
+  color: white;
   display: inline-block;
   transition: 150ms;
   &:hover, &:active, &:focus {
     text-decoration: underline;
-    color: $blue700;
+    color: white;
     transition: 150ms;
   }
 }
