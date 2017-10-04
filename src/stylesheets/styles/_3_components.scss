@@ -62,7 +62,7 @@
       width: 0;
       height: 100%;
       background-color: white;
-      transition: 1000ms;
+      transition: 500ms;
     }
   }
 
@@ -80,6 +80,15 @@
     color: rgba(255, 255, 255, 0.5);
     font-weight: 600;
     padding: 0 12.5px;
+    cursor: pointer;
+    transition: 150ms;
+    &:hover {
+      transition: 150ms;
+      color: white;
+    }
+    &.active {
+      color: white;
+    }
   }
 }
 

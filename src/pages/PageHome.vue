@@ -25,11 +25,9 @@ export default {
 
   methods: Methods,
 
-  ready () {
-
-  },
-
   mounted () {
+    this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
+    this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
     this.initBackgroundVideo()
     window.addEventListener('resize', this.resizeVideo)
   },

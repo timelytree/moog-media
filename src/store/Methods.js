@@ -42,20 +42,24 @@ export default {
   // -------------------------------------------------- Resize background video
   // --------------------------------------------------------------------------
   setActiveVideoSection: function (num) {
-    // console.log(num)
+    var markers = Store.videoTimerMarkers
+    for (var i = 0; i < markers.length; i++) {
+      this.remC(markers[i], 'active')
+    }
+    this.addC(markers[num], 'active')
   },
   // --------------------------------------------------------- Seek video track
   // --------------------------------------------------------------------------
   seekVideoTrack: function (num) {
-    var length = Store.videoLength
+    var length = Math.floor(Store.videoLength)
     if ((num) && (length)) {
-      Store.videoTimerSeeker.style.width = '' + ((num / length) * 100) + '%'
+      Store.videoTimerSeeker.style.width = '' + ((Math.floor(num) / length) * 100) + '%'
     }
   },
   // ------------------------- Initialize YouTube background video on home page
   // --------------------------------------------------------------------------
   initBackgroundVideo: function () {
-    var player = new YTPlayer('#videoPLAYER', {
+    Store.player = new YTPlayer('#videoPLAYER', {
       autoplay: true,
       captions: false,
       controls: false,
@@ -65,22 +69,41 @@ export default {
       modestBranding: true,
       related: false,
       info: false,
-      timeupdateFrequency: 500
+      timeupdateFrequency: 1000
     })
-    player.load('XjcEM2Q6vNE')
-    player.play()
-    player.setVolume(0)
-    player.on('playing', () => {
-      this.updateStore('videoLength', player.getDuration())
-      this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
+    Store.player.load('XjcEM2Q6vNE')
+    Store.player.play()
+    Store.player.setVolume(0)
+    Store.player.on('playing', () => {
+      this.updateStore('videoLength', Store.player.getDuration())
       this.setActiveVideoSection(0)
       this.resizeVideo()
     })
-    player.on('timeupdate', (seconds) => {
-      this.seekVideoTrack(seconds)
+    Store.player.on('timeupdate', (seconds) => {
+      var secs = Math.floor(seconds)
+      var vidTot = Math.floor(Store.videoLength)
+      var point1 = Math.floor(vidTot / 3) - 1
+      var point2 = Math.floor(vidTot * 2 / 3)
+      this.seekVideoTrack(secs)
+      if (secs < point1) {
+        this.setActiveVideoSection(0)
+      } else if (((secs + 1) > point1) && (secs < point2)) {
+        this.setActiveVideoSection(1)
+      } else if ((secs + 1) > point2) {
+        this.setActiveVideoSection(2)
+      }
     })
-    player.on('ended', () => {
-      player.seek(0)
+    Store.player.on('ended', () => {
+      Store.player.seek(0.01)
     })
+  },
+  // --------------------------------------------------------- Seek video track
+  // --------------------------------------------------------------------------
+  seekVideo: function (e) {
+    var num = parseInt(this.gA(e.target, 'num'))
+    var seekPos = Store.videoLength * num / (Store.videoTimerMarkers.length) + 0.01
+    Store.player.seek(seekPos)
+    this.seekVideoTrack(seekPos)
+    this.setActiveVideoSection(num)
   }
 }
