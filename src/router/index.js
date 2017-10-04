@@ -34,7 +34,7 @@ export default new Router({
     {
       path: '/admin',
       beforeEnter: (to, from, next) => {
-        var win = window.open('http://67.207.85.161/displaced/wp-admin', '_blank')
+        var win = window.open('http://67.207.85.161/moog/wp-admin', '_blank')
         win.focus()
         next(false)
       }

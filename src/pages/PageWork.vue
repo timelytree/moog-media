@@ -1,5 +1,13 @@
 <template>
-  <div class="page-modal" id="workPAGE">
+  <div class="page-overlay" id="workPAGE">
+    <div class="page-modal container">
+      <router-link to="#" class="work-tile"></router-link>
+      <router-link to="#" class="work-tile"></router-link>
+      <router-link to="#" class="work-tile"></router-link>
+      <router-link to="#" class="work-tile"></router-link>
+      <router-link to="#" class="work-tile"></router-link>
+      <router-link to="#" class="work-tile"></router-link>
+    </div>
   </div>
 </template>
 
