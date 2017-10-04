@@ -1,0 +1,89 @@
+////////////////////////////////////////////////////////////// Background Video
+//-----------------------------------------------------------------------------
+.videoWRAPPER {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  #videoOVERLAY {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+/////////////////////////////////////////////////////////////////// Video Timer
+//-----------------------------------------------------------------------------
+#video-timer {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  height: auto;
+
+  #video-timer-track {
+    position: absolute;
+    top: -2px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    #video-timer-seeker {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: white;
+      transition: 1000ms;
+    }
+  }
+
+  #video-timer-markers {
+    @include display-flex;
+    @include flex-row;
+    @include flex-center;
+    padding-top: 15px;
+  }
+
+  .video-timer-marker {
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    padding: 0 12.5px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

@@ -1,7 +1,33 @@
-### MOOG Media
+# displaced
 
-[MOOG Media](http://www.moogmedia.ca) is a collective of artists that love to create, to shake things up, to make something real out of abstract ideas, and to bring brainchildren safely into this chaotic world, whatever the means. Whether it’s to build an online home for your product, to capture your brand through moving image, or connect you with the right people in all corners of the world, we are passionate about the power of art, smart design and meaningful relationships to enrich our physical and virtual spaces. If you have a simple, or radical, idea, we want to hear it. Because that’s where the magic begins.
+> A Vue.js project
 
-Get in touch!
+## Build Setup
 
-[nauras@moogmedia.ca](mailto:nauras@moogmedia.ca)
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
+```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+# Utilities
+Vue Meta: https://github.com/declandewet/vue-meta#meta-object
