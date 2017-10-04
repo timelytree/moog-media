@@ -1,3 +1,4 @@
+import axios from 'axios'
 import Store from './Store.js'
 import YTPlayer from 'yt-player'
 
@@ -105,5 +106,12 @@ export default {
     Store.player.seek(seekPos)
     this.seekVideoTrack(seekPos)
     this.setActiveVideoSection(num)
+  },
+  // --------------------------------------------------------------- Fetch page
+  // --------------------------------------------------------------------------
+  fetchAllProjects: function (cb) {
+    axios
+      .get('http://67.207.85.161/moog/wp-json/wp/v2/projects/')
+      .then(response => { cb(response.data) })
   }
 }

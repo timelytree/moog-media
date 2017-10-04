@@ -31,3 +31,4 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 # Utilities
 Vue Meta: https://github.com/declandewet/vue-meta#meta-object
+WP CORS: https://github.com/Shelob9/rest-all-cors
