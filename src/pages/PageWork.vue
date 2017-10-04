@@ -1,5 +1,9 @@
 <template>
   <div class="page-overlay" id="workPAGE">
+    <div class="work-nav container">
+      <div class="work-nav-title">Our Work</div>
+      <router-link to="/"><img src="../assets/images/close_rounded_icon_white.svg" /></router-link>
+    </div>
     <div class="page-modal container">
       <ProjectTile v-for="project in projects" v-bind:project="project" :key="project.id" />
     </div>

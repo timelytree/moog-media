@@ -39,6 +39,30 @@
   }
 }
 
+////////////////////////////////////////////////////////// Nav on Our Work page
+//-----------------------------------------------------------------------------
+.work-nav {
+  @include display-flex;
+  @include flex-row;
+  @include flex-between;
+  @include flex-middle;
+  padding: 0;
+  height: 50px;
+  img {
+    width: 20px;
+    cursor: pointer;
+  }
+}
+
+.work-nav-title {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 2px;
+}
+
 /////////////////////////////////////////////////////////////////// Video Timer
 //-----------------------------------------------------------------------------
 #video-timer {
@@ -124,7 +148,6 @@
 .project-tile {
   width: 50%;
   padding-top: 28.125%;
-  background-color: teal;
   float: left;
   overflow: hidden;
   position: relative;
