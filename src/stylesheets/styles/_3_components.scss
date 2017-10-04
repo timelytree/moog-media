@@ -1,28 +1,10 @@
-////////////////////////////////////////////////////////////// Background Video
+////////////////////////////////////////////////////////////////////////// Logo
 //-----------------------------------------------------------------------------
-.videoWRAPPER {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
-  #videoOVERLAY {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: 100;
-  }
-
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+#logo {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 250px;
 }
 
 /////////////////////////////////////////////////////////////////// Video Timer
@@ -69,7 +51,32 @@
   }
 }
 
+////////////////////////////////////////////////////////////// Background Video
+//-----------------------------------------------------------------------------
+.videoWRAPPER {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 
+  #videoOVERLAY {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
 
 
 

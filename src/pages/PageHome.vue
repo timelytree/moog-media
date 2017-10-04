@@ -1,5 +1,6 @@
 <template>
   <div class="page-full" id="homePAGE">
+    <img id="logo" src="../assets/images/logoMOOG_white.svg" />
     <VideoTimer />
     <div class="videoWRAPPER">
       <div id="videoOVERLAY"></div>
