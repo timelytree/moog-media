@@ -54,7 +54,7 @@ export default {
             }
           }, num2)
           clearTimeout(timeout)
-        }, 400)
+        }, 150)
       })
     })
   }

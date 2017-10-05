@@ -36,19 +36,7 @@ module.exports = merge(baseWebpackConfig, {
             }
           }
         ]
-        // include: resolve(__dirname, '../src/stylesheets')  // Use include instead exclude to improve the build performance
-      },
-      // {
-      //   test: /\.svg$/,
-      //   loader: 'svg-inline-loader'
-      // }
-      // {
-      //   test: /\.(jpe?g|png|gif)$/i,
-      //   loaders: [
-      //     'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
-      //     'image-webpack-loader?bypassOnDebug'
-      //   ]
-      // }
+      }
     ]
   },
   // cheap-module-eval-source-map is faster for development

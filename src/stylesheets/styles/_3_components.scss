@@ -236,7 +236,39 @@
   padding-top: 56.25%;
 }
 
+////////////////////////////////////////////////////////////////////////// Logo
+//-----------------------------------------------------------------------------
+.project-body {
+  width: 100%;
+  padding-bottom: 15px;
+}
 
+.main-carousel {
+  overflow: hidden;
+  outline: none;
+  position: relative;
+  left: -15px;
+  width: calc(100% + 30px);
+  .flickity-prev-next-button {
+    position: absolute;
+    top: calc(50% - 50px/2);
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    &.previous {
+      left: 0;
+    }
+    &.next {
+      right: 0;
+    }
+    .arrow {
+      fill: white;
+    }
+  }
+}
 
 
 

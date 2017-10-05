@@ -10,6 +10,7 @@
       </div>
       <div class="page-modal container">
         <div class="project-banner" :style="{ 'background-image': 'url(' + bannerImage + ')' }" ></div>
+        <div class="project-body" v-html="body"></div>
       </div>
     </div>
   </transition>
@@ -17,6 +18,8 @@
 
 <script>
 import Methods from '../store/methods.js'
+// import Flickity from 'flickity'
+// import Methods from '../store/methods.js'
 
 export default {
   name: 'PageProject',
@@ -26,16 +29,18 @@ export default {
   data () {
     return {
       title: '',
-      bannerImage: ''
+      bannerImage: '',
+      body: ''
     }
   },
 
-  mounted () {
+  created () {
     var projectId = this.$route.query.id
     this.fetchSingleProject(response => {
-      console.log(response)
       this.title = response.title.rendered
       this.bannerImage = response.thumbnail.guid
+      this.body = response.content.rendered
+      this.initializeCarousel()
     }, projectId)
   }
 }

@@ -1,6 +1,9 @@
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "flickity" }] */
+
 import axios from 'axios'
 import Store from './Store.js'
 import YTPlayer from 'yt-player'
+import Flickity from 'flickity'
 
 export default {
   // -------------------------------------------------------- Utility functions
@@ -120,5 +123,72 @@ export default {
     axios
       .get('http://67.207.85.161/moog/wp-json/wp/v2/projects/' + projectId + '')
       .then(response => { cb(response.data) })
+  },
+  // ------------------------- Get the closest parent element to a select child
+  // --------------------------------------------------------------------------
+  getClosestParent: function (elem, selector) {
+    // Element.matches() polyfill
+    if (!Element.prototype.matches) {
+      Element.prototype.matches =
+        Element.prototype.matchesSelector ||
+        Element.prototype.mozMatchesSelector ||
+        Element.prototype.msMatchesSelector ||
+        Element.prototype.oMatchesSelector ||
+        Element.prototype.webkitMatchesSelector ||
+        function (s) {
+          var matches = (this.document || this.ownerDocument).querySelectorAll(s)
+          var i = matches.length
+          while (--i >= 0 && matches.item(i) !== this) {}
+          return i > -1
+        }
+    }
+    // Get closest match
+    for (; elem && elem !== document; elem = elem.parentNode) {
+      if (elem.matches(selector)) return elem
+    }
+    return null
+  },
+  // ------------------------- Get the closest parent element to a select child
+  // --------------------------------------------------------------------------
+  initializeCarousel: function () {
+    var _this = this
+    var oldCarousel = false
+    var carousel = null
+    var gallery = null
+    var imgs = null
+    function getItems () {
+      imgs = _this.cE('carousel')[0].getElementsByTagName('img')
+      gallery = _this.cE('fsn-gallery')[0]
+      carousel = document.createElement('div')
+    }
+    function createNewCarousel () {
+      carousel.classList = 'main-carousel'
+      gallery.insertBefore(carousel, gallery.firstElementChild)
+      for (var i = 0; i < imgs.length; i++) {
+        var div = document.createElement('div')
+        div.classList = 'carousel-cell'
+        carousel.insertBefore(div, carousel.firstElementChild)
+        var img = document.createElement('img')
+        img.src = imgs[i].src
+        div.insertBefore(img, div.firstElementChild)
+      }
+      oldCarousel.parentNode.removeChild(oldCarousel)
+    }
+    function initSlider () {
+      var flickity = new Flickity(carousel, {
+        wrapAround: true,
+        pageDots: false,
+        draggable: false
+      })
+    }
+    var interval = setInterval(() => {
+      oldCarousel = _this.cE('carousel-container')[0]
+      if (oldCarousel) {
+        getItems()
+        createNewCarousel()
+        initSlider()
+        clearInterval(interval)
+      }
+    }, 100)
   }
 }
