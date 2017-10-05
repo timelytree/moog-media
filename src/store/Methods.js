@@ -113,5 +113,12 @@ export default {
     axios
       .get('http://67.207.85.161/moog/wp-json/wp/v2/projects/')
       .then(response => { cb(response.data) })
+  },
+  // --------------------------------------------------------------- Fetch page
+  // --------------------------------------------------------------------------
+  fetchSingleProject: function (cb, projectId) {
+    axios
+      .get('http://67.207.85.161/moog/wp-json/wp/v2/projects/' + projectId + '')
+      .then(response => { cb(response.data) })
   }
 }

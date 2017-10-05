@@ -39,9 +39,9 @@
   }
 }
 
-////////////////////////////////////////////////////////// Nav on Our Work page
+////////////////////////////////////// Nav on Our Work and single Project pages
 //-----------------------------------------------------------------------------
-.work-nav {
+.work-nav, .project-nav {
   @include display-flex;
   @include flex-row;
   @include flex-between;
@@ -54,13 +54,39 @@
   }
 }
 
-.work-nav-title {
+.work-nav-title, .project-nav-title {
   font-size: 24px;
   line-height: 28px;
   font-weight: 600;
   text-transform: uppercase;
   color: white;
   letter-spacing: 2px;
+}
+
+.project-toolbar {
+  @include display-flex;
+  @include flex-row;
+  @include flex-middle;
+}
+
+.back-to-projects-button {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-right: 25px;
+  margin-right: 25px;
+  color: white;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: white;
+  }
 }
 
 /////////////////////////////////////////////////////////////////// Video Timer
@@ -202,8 +228,13 @@
   }
 }
 
-
-
+////////////////////////////////////////////////////////////////// Project Page
+//-----------------------------------------------------------------------------
+.project-banner {
+  @include centerImage;
+  width: 100%;
+  padding-top: 56.25%;
+}
 
 
 
