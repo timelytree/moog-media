@@ -36,6 +36,9 @@
   @include flex-wrap;
   background-color: white;
   padding: 0;
+  position: absolute;
+  top: 250px;
+  left: calc(50% - 1140px/2);
 }
 
 @include placeholder {
