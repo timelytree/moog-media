@@ -243,12 +243,27 @@
   padding-bottom: 15px;
 }
 
+.flickity-viewport, .flickity-slider, .carousel-cell {
+  height: 100%;
+}
+
+.fsn-gallery {
+  height: 500px;
+}
+
+.carousel-cell {
+  img {
+    height: 100%;
+  }
+}
+
 .main-carousel {
   overflow: hidden;
   outline: none;
   position: relative;
   left: -15px;
   width: calc(100% + 30px);
+  height: 100%;
   .flickity-prev-next-button {
     position: absolute;
     top: calc(50% - 50px/2);

@@ -18,8 +18,7 @@
 
 <script>
 import Methods from '../store/methods.js'
-// import Flickity from 'flickity'
-// import Methods from '../store/methods.js'
+import Store from '../store/Store.js'
 
 export default {
   name: 'PageProject',
@@ -41,6 +40,10 @@ export default {
       this.bannerImage = response.thumbnail.guid
       this.body = response.content.rendered
       this.initializeCarousel()
+      var timeout = setTimeout(() => {
+        Store.flickityGallery.resize()
+        clearTimeout(timeout)
+      }, 500)
     }, projectId)
   }
 }

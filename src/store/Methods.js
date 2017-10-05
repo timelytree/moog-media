@@ -148,7 +148,7 @@ export default {
     }
     return null
   },
-  // ------------------------- Get the closest parent element to a select child
+  // ------------------------------------------------ Initialize gallery slider
   // --------------------------------------------------------------------------
   initializeCarousel: function () {
     var _this = this
@@ -175,10 +175,12 @@ export default {
       oldCarousel.parentNode.removeChild(oldCarousel)
     }
     function initSlider () {
-      var flickity = new Flickity(carousel, {
+      Store.flickityGallery = new Flickity(carousel, {
         wrapAround: true,
         pageDots: false,
-        draggable: false
+        draggable: false,
+        adaptiveHeight: true,
+        imagesLoaded: true
       })
     }
     var interval = setInterval(() => {
