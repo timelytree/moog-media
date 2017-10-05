@@ -5,14 +5,17 @@
         <div class="work-nav-title">Our Work</div>
         <router-link to="/"><img src="../assets/images/close_rounded_icon_white.svg" /></router-link>
       </div>
-      <div class="page-modal container">
-        <ProjectTile v-for="project in projects" v-bind:project="project" :key="project.id" />
+      <div class="page-modal">
+        <div class="container" v-if="imagesLoaded">
+          <ProjectTile v-for="project in projects" v-bind:project="project" :key="project.id" />
+        </div>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import ImagesLoaded from 'imagesloaded'
 import Methods from '../store/methods.js'
 import ProjectTile from '../components/ProjectTile.vue'
 
@@ -27,25 +30,32 @@ export default {
 
   data () {
     return {
-      projects: {}
+      projects: {},
+      imagesLoaded: false
     }
   },
 
   mounted () {
     this.fetchAllProjects(response => {
       this.projects = response
-      var posts = this.cE('project-tile')
-      var num1 = 0
-      var num2 = 50
-      var interval = setInterval(() => {
-        if (num1 < posts.length) {
-          this.addC(posts[num1], 'active')
-          num1 += 1
-          num2 += 25
-        } else {
-          clearInterval(interval)
-        }
-      }, num2)
+      ImagesLoaded('.page-modal', { background: '.project-tile-thumbnail' }, () => {
+        this.imagesLoaded = true
+        var posts = this.cE('project-tile')
+        var timeout = setTimeout(() => {
+          var num1 = 0
+          var num2 = 50
+          var interval = setInterval(() => {
+            if (num1 < posts.length) {
+              this.addC(posts[num1], 'active')
+              num1 += 1
+              num2 += 25
+            } else {
+              clearInterval(interval)
+            }
+          }, num2)
+          clearTimeout(timeout)
+        }, 400)
+      })
     })
   }
 }

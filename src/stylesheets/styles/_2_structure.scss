@@ -39,6 +39,9 @@
   position: absolute;
   top: 250px;
   left: calc(50% - 1140px/2);
+  .container {
+    padding: 0;
+  }
 }
 
 @include placeholder {
