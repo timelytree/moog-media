@@ -31,9 +31,10 @@
 }
 
 .page-modal {
+  @include display-flex;
+  @include flex-row;
+  @include flex-wrap;
   background-color: white;
-  min-height: 100%;
-  margin-bottom: 50px;
   padding: 0;
 }
 
