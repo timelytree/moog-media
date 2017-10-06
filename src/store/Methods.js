@@ -62,7 +62,7 @@ export default {
   },
   // ------------------------- Initialize YouTube background video on home page
   // --------------------------------------------------------------------------
-  initBackgroundVideo: function () {
+  initBackgroundVideo: function (cb) {
     Store.player = new YTPlayer('#videoPLAYER', {
       autoplay: true,
       captions: false,
@@ -82,6 +82,7 @@ export default {
       this.updateStore('videoLength', Store.player.getDuration())
       this.setActiveVideoSection(0)
       this.resizeVideo()
+      cb('true')
     })
     Store.player.on('timeupdate', (seconds) => {
       var secs = Math.floor(seconds)

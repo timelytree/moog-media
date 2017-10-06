@@ -5,6 +5,7 @@
     <Navigation />
     <VideoTimer />
     <div class="videoWRAPPER">
+      <PreLoader v-if="loading" />
       <div id="videoOVERLAY"></div>
       <div id="videoPLAYER"></div>
     </div>
@@ -15,13 +16,21 @@
 import Methods from './store/methods.js'
 import VideoTimer from './components/VideoTimer.vue'
 import Navigation from './components/Navigation.vue'
+import PreLoader from './components/PreLoader.vue'
 
 export default {
   name: 'App',
 
   components: {
     Navigation,
-    VideoTimer
+    VideoTimer,
+    PreLoader
+  },
+
+  data () {
+    return {
+      loading: true
+    }
   },
 
   metaInfo: {
@@ -33,7 +42,9 @@ export default {
   mounted () {
     this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
     this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
-    this.initBackgroundVideo()
+    this.initBackgroundVideo(response => {
+      this.loading = false
+    })
     window.addEventListener('resize', this.resizeVideo)
   },
 
