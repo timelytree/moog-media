@@ -4,6 +4,8 @@
   display: none;
 }
 
+///////////////////////////////////////////////////////////////////// Work Page
+//-----------------------------------------------------------------------------
 #workPAGE {
   z-index: 50;
   .page-modal {
@@ -13,10 +15,132 @@
   }
 }
 
+////////////////////////////////////////////////////////////////// Project Page
+//-----------------------------------------------------------------------------
 #projectPAGE {
   z-index: 100;
+
+  // project-video-slide // project-intro-slide // project-gallery-slide
+  // project-text-slide // project-single-image-slide // project-subtitle-slide (h2 tags)
+
+  .project-video-slide, .project-intro-slide, .project-gallery-slide,
+  .project-text-slide, .project-single-image-slide, .project-subtitle-slide,
+  .project-press-slide, .project-banner-slide {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    &:first-child {
+      padding-top: 50px;
+    }
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  // FULL WIDTH slides (VIDEO, GALLERY)
+  .project-video-slide, .project-gallery-slide {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // TEXT slides (TEXT, INTRO)
+  .project-text-slide, .project-intro-slide {
+    .fsn-text {
+      text-align: center;
+      width: 400px;
+      text-align: justify;
+      margin: 0 auto;
+      p {
+        margin-bottom: 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // IMG slides (INTRO, IMAGE)
+  .project-intro-slide, .project-single-image-slide {
+    img {
+      width: 500px;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  // SUBTITLED slides (SUBTITLE, PRESS)
+  .project-subtitle-slide, .project-press-slide {
+    h2 {
+      font-size: 24px;
+      line-height: 28px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+  }
+
+  // INTRO slide
+  .project-intro-slide {
+    @include flex-c;
+    img {
+      margin-bottom: 50px;
+    }
+  }
+
+  // VIDEO slide
+  .project-video-slide {
+    padding-left: 0;
+    padding-right: 0;
+    .embed-container {
+      position: relative;
+    	padding-bottom: 56.25%;
+    	padding-top: 25px;
+    	height: 0;
+      width: calc(100% + 30px);
+      left: -15px;
+
+      iframe {
+        position: absolute;
+      	top: 0;
+      	left: 0;
+      	width: 100%;
+      	height: 100%;
+      }
+    }
+  }
+
+  // SUBTITLE (h2 tag) slide
+  .project-subtitle-slide {
+    p {
+      text-align: justify;
+    }
+  }
+
+  // PRESS slide
+  .project-press-slide {
+    h2 {
+      margin-bottom: 25px;
+    }
+    img {
+      display: inline-block;
+      width: 200px;
+      height: auto;
+      margin-right: 50px;
+    }
+  }
+
+  // BANNER slide
+  .project-banner-slide {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 
+////////////////////////////////////////////////////////////////// Contact Page
+//-----------------------------------------------------------------------------
 #contactPAGE {
   .page-modal {
     box-shadow: none;
@@ -28,6 +152,8 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
+///////////////////////////////////////////////////////////////////// Team Page
+//-----------------------------------------------------------------------------
 #teamPAGE {
   .team-profiles {
     .row {

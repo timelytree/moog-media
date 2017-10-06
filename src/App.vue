@@ -40,11 +40,11 @@ export default {
   methods: Methods,
 
   mounted () {
-    this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
-    this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
-    this.initBackgroundVideo(response => {
-      this.loading = false
-    })
+    // this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
+    // this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
+    // this.initBackgroundVideo(response => {
+    //   this.loading = false
+    // })
     window.addEventListener('resize', this.resizeVideo)
   },
 

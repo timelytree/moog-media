@@ -235,6 +235,7 @@
 .project-tile-thumbnail {
   @include centerImage;
   @include transform(scale(1.05));
+  background-size: 101%;
   z-index: 0;
   transition: 800ms;
 }
@@ -259,6 +260,7 @@
 //-----------------------------------------------------------------------------
 .page-banner {
   @include centerImage;
+  background-size: 101%;
   width: 100%;
   padding-top: 56.25%;
 }
@@ -278,6 +280,7 @@
 }
 
 .carousel-cell {
+  padding: 0 2.5px;
   img {
     height: 100%;
   }
