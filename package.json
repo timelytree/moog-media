@@ -87,6 +87,7 @@
     "style-loader": "^0.18.2",
     "svg-inline-loader": "^0.8.0",
     "url-loader": "^0.5.8",
+    "vue-analytics": "^5.1.1",
     "vue-loader": "^13.0.4",
     "vue-meta": "^1.2.0",
     "vue-progressbar": "^0.7.3",
