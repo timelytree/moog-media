@@ -31,12 +31,9 @@
 }
 
 .page-modal {
-  @include display-flex;
-  @include flex-row;
-  @include flex-wrap;
   background-color: white;
-  padding: 0;
   position: absolute;
+  padding: 0;
   top: 250px;
   left: calc(50% - 1140px/2);
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);

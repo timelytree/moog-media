@@ -9,8 +9,8 @@
         </div>
       </div>
       <div class="page-modal container">
-        <div class="project-banner" :style="{ 'background-image': 'url(' + bannerImage + ')' }" ></div>
-        <div class="project-body" v-html="body"></div>
+        <div class="page-banner" :style="{ 'background-image': 'url(' + bannerImage + ')' }" ></div>
+        <div class="page-body" v-html="body"></div>
       </div>
     </div>
   </transition>

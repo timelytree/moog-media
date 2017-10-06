@@ -117,18 +117,25 @@ export default {
     this.seekVideoTrack(seekPos)
     this.setActiveVideoSection(num)
   },
-  // --------------------------------------------------------------- Fetch page
+  // ------------------------------------------------------- Fetch all projects
   // --------------------------------------------------------------------------
   fetchAllProjects: function (cb) {
     axios
       .get('http://67.207.85.161/moog/wp-json/wp/v2/projects/')
       .then(response => { cb(response.data) })
   },
-  // --------------------------------------------------------------- Fetch page
+  // ----------------------------------------------------- Fetch single project
   // --------------------------------------------------------------------------
   fetchSingleProject: function (cb, projectId) {
     axios
       .get('http://67.207.85.161/moog/wp-json/wp/v2/projects/' + projectId + '')
+      .then(response => { cb(response.data) })
+  },
+  // -------------------------------------------------------- Fetch single page
+  // --------------------------------------------------------------------------
+  fetchSinglePage: function (cb, pageId) {
+    axios
+      .get('http://67.207.85.161/moog/wp-json/wp/v2/pages/' + pageId + '')
       .then(response => { cb(response.data) })
   },
   // ------------------------- Get the closest parent element to a select child
