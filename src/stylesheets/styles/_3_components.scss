@@ -255,7 +255,7 @@
   }
 }
 
-////////////////////////////////////////////////////////////////// Project Page
+//////////////////////////////////////////////////////////// Sinle Project page
 //-----------------------------------------------------------------------------
 .project-banner {
   @include centerImage;
@@ -263,8 +263,6 @@
   padding-top: 56.25%;
 }
 
-////////////////////////////////////////////////////////////////////////// Logo
-//-----------------------------------------------------------------------------
 .project-body {
   width: 100%;
   padding-bottom: 15px;
@@ -311,6 +309,48 @@
     }
   }
 }
+
+////////////////////////////////////////////////////////////////// Contact page
+//-----------------------------------------------------------------------------
+.contact-container {
+  @include display-flex;
+  @include flex-column;
+  @include flex-middle;
+}
+
+.contact-box {
+  width: 100%;
+  width: 410px;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 410px/2);
+  &:last-child {
+    top: 92px;
+  }
+}
+
+.contact-title, .contact-email {
+  color: white;
+
+}
+
+.contact-title {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.contact-email {
+  font-size: 32px;
+  line-height: 36px;
+}
+
+
+
+
+
+
 
 
 

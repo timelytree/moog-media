@@ -5,6 +5,7 @@ import PageHome from '@/pages/PageHome'
 import PageTeam from '@/pages/PageTeam'
 import PageWork from '@/pages/PageWork'
 import PageProject from '@/pages/PageProject'
+import PageContact from '@/pages/PageContact'
 
 Vue.use(Router)
 Vue.use(Meta)
@@ -30,6 +31,11 @@ export default new Router({
       path: '/project/:slug',
       name: 'PageProject',
       component: PageProject
+    },
+    {
+      path: '/contact',
+      name: 'PageContact',
+      component: PageContact
     },
     {
       path: '/admin',

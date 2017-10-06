@@ -7,7 +7,7 @@
     <div id="menu" v-if="menuOpen">
       <router-link v-on:click.native="menuOpen = !menuOpen" to="/work" class="menuItem">Work</router-link>
       <router-link v-on:click.native="menuOpen = !menuOpen" to="/team" class="menuItem">Team</router-link>
-      <router-link v-on:click.native="menuOpen = !menuOpen" to="#" class="menuItem">Contact</router-link>
+      <router-link v-on:click.native="menuOpen = !menuOpen" to="/contact" class="menuItem">Contact</router-link>
     </div>
   </nav>
 </template>

@@ -12,7 +12,16 @@
   z-index: 100;
 }
 
+#contactPAGE {
+  .page-modal {
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
 
+.contact-page {
+  background-color: rgba(0, 0, 0, 0.75);
+}
 
 
 
