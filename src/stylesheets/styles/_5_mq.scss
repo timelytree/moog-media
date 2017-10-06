@@ -92,6 +92,10 @@
     .container {
       width: 100%;
     }
+    &.contact-container {
+      height: 151px;
+      top: calc(50% - 151px/2);
+    }
   }
 
   .fsn-gallery {
@@ -143,6 +147,9 @@
     left: $pad;
     margin-bottom: $pad;
     width: calc(100vw - #{$pad*2});
+    &.contact-container {
+      top: 200px;
+    }
   }
 
   .project-tile {
@@ -158,6 +165,22 @@
     margin-right: 10px;
     br {
       display: block;
+    }
+  }
+
+  .contact-box {
+    width: 100%;
+    left: 0;
+    &:last-child {
+      top: 82px;
+    }
+    .contact-title {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .contact-email {
+      font-size: 26px;
+      line-height: 30px;
     }
   }
 }
