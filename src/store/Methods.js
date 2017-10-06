@@ -47,10 +47,16 @@ export default {
   // --------------------------------------------------------------------------
   setActiveVideoSection: function (num) {
     var markers = Store.videoTimerMarkers
-    for (var i = 0; i < markers.length; i++) {
-      this.remC(markers[i], 'active')
+    if (Store.activeVideoSection === null) {
+      this.addC(markers[num], 'active')
+      Store.activeVideoSection = num
+    } else if (Store.activeVideoSection === num) {
+      return false
+    } else {
+      this.remC(markers[Store.activeVideoSection], 'active')
+      Store.activeVideoSection = num
+      this.addC(markers[num], 'active')
     }
-    this.addC(markers[num], 'active')
   },
   // --------------------------------------------------------- Seek video track
   // --------------------------------------------------------------------------
