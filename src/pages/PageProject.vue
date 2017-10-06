@@ -4,7 +4,7 @@
       <div class="project-nav container">
         <div class="project-nav-title" v-html="title"></div>
         <div class="project-toolbar">
-          <router-link to="/work" class="back-to-projects-button">Back to Projects</router-link>
+          <router-link to="/work" class="back-to-projects-button">Back to <br /> Projects</router-link>
           <router-link to="/"><img src="../assets/images/close_rounded_icon_white.svg" /></router-link>
         </div>
       </div>

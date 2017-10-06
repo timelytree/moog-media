@@ -1,25 +1,165 @@
 ////////////////////////////////////////////////////////////////////// < 1024px
 //-----------------------------------------------------------------------------
 @media only screen and (max-width: 1140px) {
+  $pad: 32px;
 
+  #logo, #nav {
+    top: $pad;
+  }
+
+  #logo {
+    left: $pad;
+  }
+
+  #nav {
+    right: $pad;
+    #menu {
+      top: calc(50px + #{$pad});
+      right: $pad;
+    }
+  }
+
+  #video-timer {
+    bottom: $pad;
+  }
+
+  .page-modal {
+    left: calc(50% - 960px/2);
+    margin-bottom: $pad;
+  }
 }
 
 /////////////////////////////////////////////////////////////////////// < 768px
 //-----------------------------------------------------------------------------
 @media only screen and (max-width: 768px) {
+  $pad: 24px;
 
+  #logo, #nav {
+    top: $pad;
+  }
+
+  #logo {
+    left: $pad;
+  }
+
+  #nav {
+    right: $pad;
+    #menu {
+      top: calc(50px + #{$pad});
+      right: $pad;
+    }
+  }
+
+  #video-timer {
+    bottom: $pad;
+  }
+
+  .page-modal {
+    left: calc(50% - 720px/2);
+    margin-bottom: $pad;
+  }
 }
 
 /////////////////////////////////////////////////////////////////////// < 737px
 //-----------------------------------------------------------------------------
 @media only screen and (max-width: 737px) {
+  $pad: 24px;
 
+  #logo {
+    width: 200px;
+  }
+
+  #nav {
+    #menu {
+      top: calc(50px + #{$pad});
+      right: $pad;
+    }
+  }
+
+  .page-overlay {
+    padding-top: 100px;
+  }
+
+  .project-nav, .work-nav {
+    padding: 0 $pad;
+  }
+
+  .page-modal {
+    left: $pad;
+    top: 150px;
+    margin-bottom: $pad;
+    width: calc(100vw - #{$pad*2});
+    .container {
+      width: 100%;
+    }
+  }
+
+  .fsn-gallery {
+    height: 250px;
+  }
+
+  #video-timer {
+    #video-timer-track {
+      display: none;
+    }
+    .video-timer-marker {
+      font-size: 16px;
+      line-height: 20px;
+      padding: 0 10px;
+    }
+  }
 }
 
 /////////////////////////////////////////////////////////////////////// < 415px
 //-----------------------------------------------------------------------------
 @media only screen and (max-width: 415px) {
+  $pad: 15px;
 
+  #logo, #nav {
+    top: $pad;
+  }
+
+  #logo {
+    left: $pad;
+  }
+
+  #nav {
+    right: $pad;
+    #menu {
+      top: calc(50px + #{$pad});
+      right: $pad;
+    }
+  }
+
+  #video-timer {
+    bottom: $pad;
+  }
+
+  .project-nav, .work-nav {
+    padding: 0 $pad;
+  }
+
+  .page-modal {
+    left: $pad;
+    margin-bottom: $pad;
+    width: calc(100vw - #{$pad*2});
+  }
+
+  .project-tile {
+    width: 100%;
+    padding-top: 56.25%;
+  }
+
+  .back-to-projects-button {
+    font-size: 13px;
+    line-height: 13px;
+    text-align: right;
+    padding-right: 10px;
+    margin-right: 10px;
+    br {
+      display: block;
+    }
+  }
 }
 
 

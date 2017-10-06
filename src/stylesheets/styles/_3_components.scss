@@ -102,6 +102,9 @@
   margin-right: 25px;
   color: white;
   position: relative;
+  br {
+    display: none
+  }
   &:after {
     content: '';
     position: absolute;
