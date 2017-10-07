@@ -46,6 +46,5 @@ export default {
             b.parentNode.insertBefore(a, b)
         })()
     }
-
   }
 }

@@ -32,3 +32,14 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 # Utilities
 Vue Meta: https://github.com/declandewet/vue-meta#meta-object
 WP CORS: https://github.com/Shelob9/rest-all-cors
+
+For ES6 js files that don't resolve properly, need to add the following lines to webpack.base.conf.js:
+
+```javascript
+{
+  test: /\.js$/,
+  loader: 'babel-loader',
+  include: [resolve('src'), resolve('test'), resolve('node_modules/yt-player')]
+}
+```
+resolve('node_modules/NODE_MODULE_NAME) <--- in particular
