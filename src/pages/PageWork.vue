@@ -16,7 +16,7 @@
 
 <script>
 import ImagesLoaded from 'imagesloaded'
-import Methods from '../store/methods.js'
+import Methods from '../store/Methods.js'
 import ProjectTile from '../components/ProjectTile.vue'
 
 export default {

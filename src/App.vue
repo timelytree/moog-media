@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Methods from './store/methods.js'
+import Methods from './store/Methods.js'
 import VideoTimer from './components/VideoTimer.vue'
 import Navigation from './components/Navigation.vue'
 import PreLoader from './components/PreLoader.vue'
@@ -40,11 +40,11 @@ export default {
   methods: Methods,
 
   mounted () {
-    // this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
-    // this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
-    // this.initBackgroundVideo(response => {
-    //   this.loading = false
-    // })
+    this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
+    this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
+    this.initBackgroundVideo(response => {
+      this.loading = false
+    })
     window.addEventListener('resize', this.resizeVideo)
   },
 

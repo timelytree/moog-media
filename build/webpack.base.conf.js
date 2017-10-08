@@ -44,10 +44,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/yt-player')],
-        query: {
-          presets: ['env']
-        }
+        include: [resolve('node_modules/yt-player'), resolve('src'), resolve('test')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

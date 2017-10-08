@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Methods from '../store/methods.js'
+import Methods from '../store/Methods.js'
 
 export default {
   name: 'PreLoader',

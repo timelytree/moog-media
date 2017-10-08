@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Methods from '../store/methods.js'
+import Methods from '../store/Methods.js'
 import Store from '../store/Store.js'
 
 export default {
