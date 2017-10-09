@@ -24,6 +24,7 @@
   }
 
   .page-modal {
+    width: 960px;
     left: calc(50% - 960px/2);
     margin-bottom: $pad;
   }
@@ -55,6 +56,7 @@
   }
 
   .page-modal {
+    width: 720px;
     left: calc(50% - 720px/2);
     margin-bottom: $pad;
   }
@@ -85,10 +87,10 @@
   }
 
   .page-modal {
+    width: calc(100vw - #{$pad*2});
     left: $pad;
     top: 150px;
     margin-bottom: $pad;
-    width: calc(100vw - #{$pad*2});
     .container {
       width: 100%;
     }
@@ -148,9 +150,9 @@
   }
 
   .page-modal {
+    width: calc(100vw - #{$pad*2});
     left: $pad;
     margin-bottom: $pad;
-    width: calc(100vw - #{$pad*2});
     &.contact-container {
       top: 200px;
     }
