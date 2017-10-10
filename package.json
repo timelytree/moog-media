@@ -87,6 +87,7 @@
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.18.2",
     "svg-inline-loader": "^0.8.0",
+    "underscore": "^1.8.3",
     "url-loader": "^0.5.8",
     "vue-analytics": "^5.1.1",
     "vue-loader": "^13.0.4",

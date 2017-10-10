@@ -51,22 +51,24 @@ export default {
 
 <style lang="scss" scoped>
 .slide-enter-active, .slide-leave-active {
-  transition: 400ms;
+  transition: 150ms;
   background-color: rgba(0, 0, 0, 0.75);
   .project-nav, .page-modal {
-    transition: 400ms;
     transform: translateY(0);
+    opacity: 1;
+  }
+  .page-modal {
+    transition: 150ms;
   }
   .project-nav {
-    opacity: 1;
+    transition: 150ms;
+    transition-delay: 150ms;
   }
 }
 .slide-enter, .slide-leave-to {
   background-color: rgba(0, 0, 0, 0);
   .project-nav, .page-modal {
-    transform: translateY(100%);
-  }
-  .project-nav {
+    transform: translateY(50px);
     opacity: 0;
   }
 }

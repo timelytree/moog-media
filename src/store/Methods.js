@@ -20,6 +20,15 @@ export default {
   },
   // -------------------------------------------------- Resize background video
   // --------------------------------------------------------------------------
+  checkIfMobile: function () {
+    if (window.matchMedia('(max-device-width: 1024px)').matches) {
+      return 'mobile'
+    } else {
+      return 'desktop'
+    }
+  },
+  // -------------------------------------------------- Resize background video
+  // --------------------------------------------------------------------------
   resizeVideo: function () {
     var video = this.E('videoPLAYER')
     var wHeight = window.innerHeight
