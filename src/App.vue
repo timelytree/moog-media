@@ -60,7 +60,7 @@ export default {
         var timeout = setTimeout(() => {
           this.updateStore('gallerySlides', this.cE('home-gallery-image'))
           this.initHomeGallerySlider()
-          window.scrollTo(0, 1);
+          window.scrollTo(0, 1)
           clearTimeout(timeout)
         })
       })
