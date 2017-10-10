@@ -4,5 +4,7 @@ export default {
   player: null,
   activeVideoSection: null,
   videoTimerMarkers: [],
-  flickityGallery: null
+  gallerySlides: [],
+  flickityGallery: null,
+  mobileCheck: null
 }

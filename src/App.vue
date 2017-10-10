@@ -4,6 +4,7 @@
     <img id="logo" src="./assets/images/logoMOOG_white.svg" />
     <Navigation />
     <VideoTimer />
+    <HomePageImageSlider v-bind:gallery="gallery" />
     <div class="videoWRAPPER">
       <PreLoader v-if="loading" />
       <div id="videoOVERLAY"></div>
@@ -18,6 +19,7 @@ import _ from 'underscore'
 import VideoTimer from './components/VideoTimer.vue'
 import Navigation from './components/Navigation.vue'
 import PreLoader from './components/PreLoader.vue'
+import HomePageImageSlider from './components/HomePageImageSlider.vue'
 
 export default {
   name: 'App',
@@ -25,12 +27,14 @@ export default {
   components: {
     Navigation,
     VideoTimer,
-    PreLoader
+    PreLoader,
+    HomePageImageSlider
   },
 
   data () {
     return {
-      loading: true
+      loading: true,
+      gallery: []
     }
   },
 
@@ -42,16 +46,23 @@ export default {
 
   mounted () {
     var mobileCheck = this.checkIfMobile()
+    this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
     if (mobileCheck === 'desktop') {
       this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
-      this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
       this.initBackgroundVideo(response => {
         this.loading = false
+        var throttledResize = _.throttle(this.resizeVideo, 100)
+        window.addEventListener('resize', throttledResize)
       })
-      var throttledResize = _.throttle(this.resizeVideo, 100)
-      window.addEventListener('resize', throttledResize)
     } else {
-      console.log('this is mobile!')
+      this.fetchHomePageSlider(response => {
+        this.gallery = response.acf.slider_images
+        var timeout = setTimeout(() => {
+          this.updateStore('gallerySlides', this.cE('home-gallery-image'))
+          this.initHomeGallerySlider()
+          clearTimeout(timeout)
+        })
+      })
     }
   },
 

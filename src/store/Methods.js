@@ -22,8 +22,10 @@ export default {
   // --------------------------------------------------------------------------
   checkIfMobile: function () {
     if (window.matchMedia('(max-device-width: 1024px)').matches) {
+      this.updateStore('mobileCheck', 'mobile')
       return 'mobile'
     } else {
+      this.updateStore('mobileCheck', 'desktop')
       return 'desktop'
     }
   },
@@ -52,21 +54,31 @@ export default {
     video.width = vWidth
     video.style = 'left:' + vLeft + 'px; top: ' + vTop + 'px;'
   },
-  // -------------------------------------------------- Resize background video
+  // -------------------------------------------------- Set active video marker
   // --------------------------------------------------------------------------
   setActiveVideoSection: function (num) {
     var markers = Store.videoTimerMarkers
+    var slides = Store.gallerySlides
     if (Store.activeVideoSection === null) {
+      if (Store.mobileCheck === 'mobile') { this.addC(slides[num], 'active') }
       this.addC(markers[num], 'active')
       Store.activeVideoSection = num
     } else if (Store.activeVideoSection === num) {
       return false
     } else {
+      if (Store.mobileCheck === 'mobile') {
+        this.remC(slides[Store.activeVideoSection], 'active')
+        this.addC(slides[num], 'active')
+      }
       this.remC(markers[Store.activeVideoSection], 'active')
-      Store.activeVideoSection = num
       this.addC(markers[num], 'active')
+      Store.activeVideoSection = num
     }
   },
+  // -------------------------------------------- Set active home gallery slide
+  // --------------------------------------------------------------------------
+  // setActiveHomeGallerySlide: function (num) {
+  // },
   // --------------------------------------------------------- Seek video track
   // --------------------------------------------------------------------------
   seekVideoTrack: function (num) {
@@ -121,10 +133,13 @@ export default {
   // --------------------------------------------------------------------------
   seekVideo: function (e) {
     var num = parseInt(this.gA(e.target, 'num'))
-    var seekPos = Store.videoLength * num / (Store.videoTimerMarkers.length) + 0.01
-    Store.player.seek(seekPos)
-    this.seekVideoTrack(seekPos)
-    this.setActiveVideoSection(num)
+    if (Store.mobileCheck === 'desktop') {
+      var seekPos = Store.videoLength * num / (Store.videoTimerMarkers.length) + 0.01
+      Store.player.seek(seekPos)
+      this.seekVideoTrack(seekPos)
+    } else {
+      this.setActiveVideoSection(num)
+    }
   },
   // ------------------------------------------------------- Fetch all projects
   // --------------------------------------------------------------------------
@@ -145,6 +160,13 @@ export default {
   fetchSinglePage: function (cb, pageId) {
     axios
       .get('http://67.207.85.161/moog/wp-json/wp/v2/pages/' + pageId + '')
+      .then(response => { cb(response.data) })
+  },
+  // --------------------------------------------------- Fetch home page slider
+  // --------------------------------------------------------------------------
+  fetchHomePageSlider: function (cb) {
+    axios
+      .get('http://67.207.85.161/moog/wp-json/wp/v2/features/105')
       .then(response => { cb(response.data) })
   },
   // ------------------------- Get the closest parent element to a select child
@@ -170,6 +192,11 @@ export default {
       if (elem.matches(selector)) return elem
     }
     return null
+  },
+  // ---------------------------------------------- Initialize home page slider
+  // --------------------------------------------------------------------------
+  initHomeGallerySlider: function () {
+    this.setActiveVideoSection(0)
   },
   // ------------------------------------------------ Initialize gallery slider
   // --------------------------------------------------------------------------
