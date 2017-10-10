@@ -11,6 +11,10 @@
     left: $pad;
   }
 
+  #pre-loader {
+    padding-top: $pad;
+  }
+
   #nav {
     right: $pad;
     #menu {
@@ -41,6 +45,11 @@
 
   #logo {
     left: $pad;
+  }
+
+  #pre-loader {
+    @include flex-middle;
+    padding-top: 0;
   }
 
   #nav {
