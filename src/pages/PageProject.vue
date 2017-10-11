@@ -29,7 +29,19 @@ export default {
     return {
       title: '',
       bannerImage: '',
-      body: ''
+      body: '',
+      seoTitle: '',
+      seoDescription: ''
+    }
+  },
+
+  metaInfo () {
+    return {
+      title: this.seoTitle,
+      titleTemplate: '%s | a MOOG MEDIA production',
+      meta: [
+        { name: 'description', content: this.seoDescription }
+      ]
     }
   },
 
@@ -37,9 +49,12 @@ export default {
     this.$parent.loading = true
     var projectId = this.$route.query.id
     this.fetchSingleProject(response => {
+      console.log(response)
       this.title = response.title.rendered
       this.bannerImage = response.thumbnail.guid
       this.body = response.content.rendered
+      this.seoTitle = response.seo_title
+      this.seoDescription = response.seo_description
       this.$parent.loading = false
       var interval = setInterval(() => {
         var oldCarousel = this.cE('carousel-container')[0]

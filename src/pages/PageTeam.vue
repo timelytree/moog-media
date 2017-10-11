@@ -30,6 +30,15 @@ export default {
     }
   },
 
+  metaInfo () {
+    return {
+      title: 'TEAM | MOOG MEDIA',
+      meta: [
+        { name: 'description', content: 'We are a collective of professional artists and innovators that engage in new-age video storytelling' }
+      ]
+    }
+  },
+
   created () {
     this.$parent.loading = true
     var pageId = 28

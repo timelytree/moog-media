@@ -31,6 +31,8 @@ export default {
     HomePageImageSlider
   },
 
+  methods: Methods,
+
   data () {
     return {
       loading: false,
@@ -39,11 +41,14 @@ export default {
     }
   },
 
-  metaInfo: {
-    title: 'MOOG MEDIA | A Concious Media Company'
+  metaInfo () {
+    return {
+      title: 'MOOG MEDIA | A Concious Media Company',
+      meta: [
+        { name: 'description', content: 'We are a collective of professional artists and innovators that engage in new-age video storytelling' }
+      ]
+    }
   },
-
-  methods: Methods,
 
   mounted () {
     this.loading = true

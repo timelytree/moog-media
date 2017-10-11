@@ -42,4 +42,4 @@ For ES6 js files that don't resolve properly, need to add the following lines to
   include: [resolve('src'), resolve('test'), resolve('node_modules/yt-player')]
 }
 ```
-resolve('node_modules/NODE_MODULE_NAME) <--- in particular
+As well, .babelrc needs to be modified (remove 'modules: false')

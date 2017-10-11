@@ -21,7 +21,17 @@ import Methods from '../store/Methods.js'
 export default {
   name: 'PageTeam',
 
-  methods: Methods
+  methods: Methods,
+
+  metaInfo () {
+    return {
+      title: 'Contact',
+      titleTemplate: '%s | MOOG MEDIA',
+      meta: [
+        { name: 'description', content: 'Send us an email!' }
+      ]
+    }
+  }
 }
 </script>
 
