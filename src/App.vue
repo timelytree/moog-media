@@ -64,6 +64,8 @@ export default {
         var timeout = setTimeout(() => {
           this.updateStore('gallerySlides', this.cE('home-gallery-image'))
           this.initHomeGallerySlider()
+          this.loading = false
+          this.videoLoaded = true
           clearTimeout(timeout)
         })
       })
