@@ -230,14 +230,6 @@
   float: left;
   overflow: hidden;
   position: relative;
-  opacity: 0;
-  transition: 500ms;
-  &.active {
-    opacity: 1;
-    .project-tile-thumbnail {
-      @include transform(scale(1));
-    }
-  }
   &:hover {
     .project-tile-overlay {
       transition: 150ms;
@@ -260,7 +252,6 @@
 
 .project-tile-thumbnail {
   @include centerImage;
-  @include transform(scale(1.05));
   background-size: 101%;
   z-index: 0;
   transition: 800ms;

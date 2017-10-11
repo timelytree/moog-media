@@ -1,23 +1,16 @@
 <template>
-  <transition name="slide">
+  <transition name="overlay">
     <div class="page-overlay" id="workPAGE">
-      <div class="work-nav container">
-        <div class="work-nav-title">Our Work</div>
-        <router-link to="/"><img src="../assets/images/close_rounded_icon_white.svg" /></router-link>
-      </div>
-      <div class="page-modal">
-        <div class="container" v-if="imagesLoaded">
-          <ProjectTile v-for="project in projects" v-bind:project="project" :key="project.id" />
-        </div>
-      </div>
+      <WorkNav />
+      <PageModal :projects="projects" />
     </div>
   </transition>
 </template>
 
 <script>
-import ImagesLoaded from 'imagesloaded'
 import Methods from '../store/Methods.js'
-import ProjectTile from '../components/ProjectTile.vue'
+import PageModal from '../components/PageModal.vue'
+import WorkNav from '../components/WorkNav.vue'
 
 export default {
   name: 'PageWork',
@@ -25,7 +18,8 @@ export default {
   methods: Methods,
 
   components: {
-    ProjectTile
+    PageModal,
+    WorkNav
   },
 
   data () {
@@ -38,48 +32,43 @@ export default {
   mounted () {
     this.fetchAllProjects(response => {
       this.projects = response
-      ImagesLoaded('.page-modal', { background: '.project-tile-thumbnail' }, () => {
-        this.imagesLoaded = true
-        var posts = this.cE('project-tile')
-        var timeout = setTimeout(() => {
-          var num1 = 0
-          var num2 = 50
-          var interval = setInterval(() => {
-            if (num1 < posts.length) {
-              this.addC(posts[num1], 'active')
-              num1 += 1
-              num2 += 25
-            } else {
-              clearInterval(interval)
-            }
-          }, num2)
-          clearTimeout(timeout)
-        }, 150)
-      })
     })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.slide-enter-active, .slide-leave-active {
-  transition: 400ms;
+.overlay-enter-active, .overlay-leave-active {
+  transition: 800ms;
   background-color: rgba(0, 0, 0, 0.75);
   .work-nav, .page-modal {
     transition: 400ms;
+    transition-delay: 400ms;
+    opacity: 1;
     transform: translateY(0);
   }
-  .work-nav {
-    opacity: 1;
-  }
 }
-.slide-enter, .slide-leave-to {
+
+.overlay-enter {
   background-color: rgba(0, 0, 0, 0);
   .work-nav, .page-modal {
+    transition: 400ms;
+    opacity: 0;
     transform: translateY(100%);
   }
+}
+
+.overlay-leave-to {
+  background-color: rgba(0, 0, 0, 0);
   .work-nav {
+    transition: 400ms;
     opacity: 0;
+    transform: translateY(100%);
+  }
+  .page-modal {
+    transition: 400ms;
+    opacity: 0;
+    transform: translateY(100%);
   }
 }
 </style>

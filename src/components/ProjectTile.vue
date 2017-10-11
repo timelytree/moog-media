@@ -1,11 +1,13 @@
 <template>
-  <router-link class="project-tile"  :to="{ name: 'PageProject', params: { slug: project.slug }, query: { id: project.id } }">
-    <div class="project-tile-overlay">
-      <div class="project-tile-title" v-html="project.title.rendered"></div>
-      <div class="project-tile-status" v-html="project.current_status"></div>
-    </div>
-    <div class="project-tile-thumbnail" :style="{ 'background-image': 'url(' + project.thumbnail.guid + ')' }"></div>
-  </router-link>
+  <transition name="fade">
+    <router-link class="project-tile"  :to="{ name: 'PageProject', params: { slug: project.slug }, query: { id: project.id } }">
+      <div class="project-tile-overlay">
+        <div class="project-tile-title" v-html="project.title.rendered"></div>
+        <div class="project-tile-status" v-html="project.current_status"></div>
+      </div>
+      <div class="project-tile-thumbnail" :style="{ 'background-image': 'url(' + project.thumbnail.guid + ')' }"></div>
+    </router-link>
+  </transition>
 </template>
 
 <script>
@@ -19,3 +21,21 @@ export default {
   methods: Methods
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../stylesheets/base/variables.scss';
+
+.fade-enter-active, .fade-leave-active {
+  transition: 400ms;
+  opacity: 1;
+  .project-tile-thumbnail {
+    @include transform(scale(1));
+  }
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+  .project-tile-thumbnail {
+    @include transform(scale(1.05));
+  }
+}
+</style>
