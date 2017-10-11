@@ -52,7 +52,7 @@ export default {
     var timer = setTimeout(() => {
       Store.flickityGallery.resize()
       clearTimeout(timer)
-    }, 500)
+    }, 1500)
   }
 }
 </script>

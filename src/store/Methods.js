@@ -227,13 +227,16 @@ export default {
       oldCarousel.parentNode.removeChild(oldCarousel)
     }
     function initSlider () {
-      Store.flickityGallery = new Flickity(carousel, {
-        wrapAround: true,
-        pageDots: false,
-        draggable: false,
-        adaptiveHeight: true,
-        imagesLoaded: true
-      })
+      var timer = setTimeout(() => {
+        Store.flickityGallery = new Flickity(carousel, {
+          wrapAround: true,
+          pageDots: false,
+          draggable: false,
+          adaptiveHeight: true,
+          imagesLoaded: true
+        })
+        clearTimeout(timer)
+      }, 1000)
     }
     function engage () {
       getItems()
