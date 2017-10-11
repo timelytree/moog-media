@@ -29,9 +29,14 @@ export default {
     }
   },
 
+  created () {
+    this.$parent.loading = true
+  },
+
   mounted () {
     this.fetchAllProjects(response => {
       this.projects = response
+      this.$parent.loading = false
     })
   }
 }

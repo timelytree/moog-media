@@ -96,6 +96,17 @@
     width: 200px;
   }
 
+  #pre-loader {
+    @include flex-top;
+    @include flex-end;
+    padding-top: $pad;
+    padding-right: calc(#{$pad*3});
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
   #nav {
     img {
       width: 25px;
@@ -159,6 +170,17 @@
 
   #logo {
     left: $pad;
+  }
+
+  #pre-loader {
+    @include flex-top;
+    @include flex-end;
+    padding-top: $pad;
+    padding-right: calc(#{$pad*4});
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   #nav {

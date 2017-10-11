@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper" id="app">
+    <PreLoader v-if="loading" />
     <router-view></router-view>
     <img id="logo" src="./assets/images/logoMOOG_white.svg" />
     <Navigation />
     <VideoTimer />
     <HomePageImageSlider v-bind:gallery="gallery" />
     <div class="videoWRAPPER">
-      <PreLoader v-if="loading" />
       <div id="videoOVERLAY"></div>
       <div id="videoPLAYER"></div>
     </div>
@@ -33,7 +33,8 @@ export default {
 
   data () {
     return {
-      loading: true,
+      loading: false,
+      videoLoaded: false,
       gallery: []
     }
   },
@@ -45,12 +46,15 @@ export default {
   methods: Methods,
 
   mounted () {
+    this.loading = true
+    this.videoLoaded = false
     var mobileCheck = this.checkIfMobile()
     this.updateStore('videoTimerMarkers', this.cE('video-timer-marker'))
     if (mobileCheck === 'desktop') {
       this.updateStore('videoTimerSeeker', this.E('video-timer-seeker'))
       this.initBackgroundVideo(response => {
         this.loading = false
+        this.videoLoaded = true
         var throttledResize = _.throttle(this.resizeVideo, 100)
         window.addEventListener('resize', throttledResize)
       })
@@ -68,6 +72,11 @@ export default {
 
   beforeDestroy: function () {
     window.removeEventListener('resize', this.resizeVideo)
+  },
+
+  updated () {
+    // console.log(this.loading)
+    // console.log(this.loading, this.videoLoaded, this.loading && !this.videoLoaded)
   }
 }
 </script>

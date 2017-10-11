@@ -34,6 +34,7 @@ export default {
   },
 
   created () {
+    this.$parent.loading = true
     var projectId = this.$route.query.id
     this.fetchSingleProject(response => {
       this.title = response.title.rendered
@@ -42,6 +43,7 @@ export default {
       this.initializeCarousel()
       var timeout = setTimeout(() => {
         Store.flickityGallery.resize()
+        this.$parent.loading = false
         clearTimeout(timeout)
       }, 500)
     }, projectId)

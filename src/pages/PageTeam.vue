@@ -31,11 +31,13 @@ export default {
   },
 
   created () {
+    this.$parent.loading = true
     var pageId = 28
     this.fetchSinglePage(response => {
       this.introText = response.intro_text
       this.body = response.content.rendered
       this.bannerImage = response.banner_image.guid
+      this.$parent.loading = false
     }, pageId)
   }
 }

@@ -109,6 +109,8 @@ export default {
       this.updateStore('videoLength', Store.player.getDuration())
       this.setActiveVideoSection(0)
       this.resizeVideo()
+      var videoPLAYER = this.E('videoPLAYER')
+      this.addC(videoPLAYER, 'active')
       cb('true')
     })
     Store.player.on('timeupdate', (seconds) => {
