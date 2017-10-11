@@ -45,11 +45,14 @@ export default {
         var oldCarousel = this.cE('carousel-container')[0]
         if (oldCarousel) {
           this.initializeCarousel()
-          Store.flickityGallery.resize()
           clearInterval(interval)
         }
       }, 10)
     }, projectId)
+    var timer = setTimeout(() => {
+      Store.flickityGallery.resize()
+      clearTimeout(timer)
+    }, 500)
   }
 }
 </script>
