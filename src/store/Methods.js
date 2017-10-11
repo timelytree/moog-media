@@ -204,7 +204,7 @@ export default {
   // --------------------------------------------------------------------------
   initializeCarousel: function () {
     var _this = this
-    var oldCarousel = false
+    var oldCarousel = this.cE('carousel-container')[0]
     var carousel = null
     var gallery = null
     var imgs = null
@@ -235,14 +235,10 @@ export default {
         imagesLoaded: true
       })
     }
-    var interval = setInterval(() => {
-      oldCarousel = _this.cE('carousel-container')[0]
-      if (oldCarousel) {
-        getItems()
-        createNewCarousel()
-        initSlider()
-        clearInterval(interval)
-      }
-    }, 100)
+    function engage () {
+      getItems()
+      createNewCarousel()
+      initSlider()
+    } engage()
   }
 }

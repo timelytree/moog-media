@@ -40,12 +40,15 @@ export default {
       this.title = response.title.rendered
       this.bannerImage = response.thumbnail.guid
       this.body = response.content.rendered
-      this.initializeCarousel()
-      var timeout = setTimeout(() => {
-        Store.flickityGallery.resize()
-        this.$parent.loading = false
-        clearTimeout(timeout)
-      }, 500)
+      this.$parent.loading = false
+      var interval = setInterval(() => {
+        var oldCarousel = this.cE('carousel-container')[0]
+        if (oldCarousel) {
+          this.initializeCarousel()
+          Store.flickityGallery.resize()
+          clearInterval(interval)
+        }
+      }, 10)
     }, projectId)
   }
 }
