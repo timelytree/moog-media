@@ -49,7 +49,6 @@ export default {
     this.$parent.loading = true
     var projectId = this.$route.query.id
     this.fetchSingleProject(response => {
-      console.log(response)
       this.title = response.title.rendered
       this.bannerImage = response.thumbnail.guid
       this.body = response.content.rendered
