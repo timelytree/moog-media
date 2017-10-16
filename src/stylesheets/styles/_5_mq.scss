@@ -12,7 +12,7 @@
   }
 
   #pre-loader {
-    padding-top: $pad;
+    top: $pad;
   }
 
   #nav {
@@ -57,7 +57,11 @@
 
   #pre-loader {
     @include flex-middle;
-    padding-top: 0;
+    top: $pad - 3px;
+    left: auto;
+    right: $pad * 3;
+    width: 30px;
+    height: 30px;
   }
 
   #nav {
@@ -99,12 +103,10 @@
   #pre-loader {
     @include flex-top;
     @include flex-end;
-    padding-top: $pad;
-    padding-right: calc(#{$pad*3});
-    img {
-      width: 20px;
-      height: 20px;
-    }
+    top: $pad;
+    right: $pad * 3;
+    width: 20px;
+    height: 20px;
   }
 
   #nav {
@@ -112,7 +114,7 @@
       width: 25px;
     }
     #menu {
-      top: calc(#{$pad*3});
+      top: $pad * 3;
       right: $pad;
     }
   }
@@ -164,8 +166,8 @@
     .project-video-slide, .project-intro-slide, .project-gallery-slide,
     .project-text-slide, .project-single-image-slide, .project-subtitle-slide,
     .project-press-slide, .project-banner-slide {
-      padding-top: #{$pad/2};
-      padding-bottom: #{$pad/2};
+      padding-top: $pad / 2;
+      padding-bottom: $pad / 2;
       padding-left: $pad;
       padding-right: $pad;
       &:first-child {
@@ -220,18 +222,14 @@
   #pre-loader {
     @include flex-top;
     @include flex-end;
-    padding-top: $pad;
-    padding-right: calc(#{$pad*4});
-    img {
-      width: 20px;
-      height: 20px;
-    }
+    top: $pad;
+    right: $pad * 4;
   }
 
   #nav {
     right: $pad;
     #menu {
-      top: calc(#{$pad*3});
+      top: $pad * 3;
       right: $pad;
     }
   }
@@ -329,8 +327,8 @@
     .project-video-slide, .project-intro-slide, .project-gallery-slide,
     .project-text-slide, .project-single-image-slide, .project-subtitle-slide,
     .project-press-slide, .project-banner-slide {
-      padding-top: #{$pad/2};
-      padding-bottom: #{$pad/2};
+      padding-top: $pad / 2;
+      padding-bottom: $pad / 2;
       padding-left: $pad;
       padding-right: $pad;
       &:first-child {
