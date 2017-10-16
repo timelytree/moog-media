@@ -90,46 +90,61 @@ export default {
   // ------------------------- Initialize YouTube background video on home page
   // --------------------------------------------------------------------------
   initBackgroundVideo: function (cb) {
-    Store.player = new YTPlayer('#videoPLAYER', {
-      autoplay: true,
-      captions: false,
-      controls: false,
-      keyboard: false,
-      fullscreen: false,
-      annotations: false,
-      modestBranding: true,
-      related: false,
-      info: false,
-      timeupdateFrequency: 1000
-    })
-    Store.player.load('XjcEM2Q6vNE')
-    Store.player.play()
-    Store.player.setVolume(0)
-    Store.player.on('playing', () => {
-      this.updateStore('videoLength', Store.player.getDuration())
-      this.setActiveVideoSection(0)
-      this.resizeVideo()
-      var videoPLAYER = this.E('videoPLAYER')
-      this.addC(videoPLAYER, 'active')
-      cb('true')
-    })
-    Store.player.on('timeupdate', (seconds) => {
-      var secs = Math.floor(seconds)
-      var vidTot = Math.floor(Store.videoLength)
-      var point1 = Math.floor(vidTot / 3) - 1
-      var point2 = Math.floor(vidTot * 2 / 3)
-      this.seekVideoTrack(secs)
-      if (secs < point1) {
+    // /////////////////////////////////////////////////// Create player object
+    var createPlayer = () => {
+      Store.player = new YTPlayer('#videoPLAYER', {
+        autoplay: true,
+        captions: false,
+        controls: false,
+        keyboard: false,
+        fullscreen: false,
+        annotations: false,
+        modestBranding: true,
+        related: false,
+        info: false,
+        timeupdateFrequency: 1000
+      })
+    }
+    // ///////////////////////// Initialize the player and player functionality
+    var initPlayer = (videoId) => {
+      console.log(videoId)
+      Store.player.load(videoId)
+      Store.player.play()
+      Store.player.setVolume(0)
+      Store.player.on('playing', () => {
+        this.updateStore('videoLength', Store.player.getDuration())
         this.setActiveVideoSection(0)
-      } else if (((secs + 1) > point1) && (secs < point2)) {
-        this.setActiveVideoSection(1)
-      } else if ((secs + 1) > point2) {
-        this.setActiveVideoSection(2)
-      }
-    })
-    Store.player.on('ended', () => {
-      Store.player.seek(0.01)
-    })
+        this.resizeVideo()
+        var videoPLAYER = this.E('videoPLAYER')
+        this.addC(videoPLAYER, 'active')
+        cb('true')
+      })
+      Store.player.on('timeupdate', (seconds) => {
+        var secs = Math.floor(seconds)
+        var vidTot = Math.floor(Store.videoLength)
+        var point1 = Math.floor(vidTot / 3) - 1
+        var point2 = Math.floor(vidTot * 2 / 3)
+        this.seekVideoTrack(secs)
+        if (secs < point1) {
+          this.setActiveVideoSection(0)
+        } else if (((secs + 1) > point1) && (secs < point2)) {
+          this.setActiveVideoSection(1)
+        } else if ((secs + 1) > point2) {
+          this.setActiveVideoSection(2)
+        }
+      })
+      Store.player.on('ended', () => {
+        Store.player.seek(0.01)
+      })
+    }
+    // ///////////////////////////////////////////////////////////////// Engage
+    var engage = () => {
+      this.fetchHomePageVideo(response => {
+        var videoId = response.acf.video_link.split('watch?v=')[1].split('&')[0]
+        createPlayer()
+        initPlayer(videoId)
+      })
+    }; engage()
   },
   // --------------------------------------------------------- Seek video track
   // --------------------------------------------------------------------------
@@ -162,6 +177,13 @@ export default {
   fetchSinglePage: function (cb, pageId) {
     axios
       .get('http://67.207.85.161/moog/wp-json/wp/v2/pages/' + pageId + '')
+      .then(response => { cb(response.data) })
+  },
+  // --------------------------------------------------- Fetch home page slider
+  // --------------------------------------------------------------------------
+  fetchHomePageVideo: function (cb) {
+    axios
+      .get('http://67.207.85.161/moog/wp-json/wp/v2/features/109')
       .then(response => { cb(response.data) })
   },
   // --------------------------------------------------- Fetch home page slider
