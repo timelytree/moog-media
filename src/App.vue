@@ -2,7 +2,8 @@
   <div class="wrapper" id="app">
     <PreLoader v-if="loading" />
     <router-view></router-view>
-    <img id="logo" src="./assets/images/logoMOOG_white.svg" />
+    <img id="logo-white" class="logo" src="./assets/images/logoMOOG_white.svg" />
+    <img id="logo-black" class="logo" src="./assets/images/logoMOOG_black.svg" />
     <Navigation />
     <VideoTimer />
     <HomePageImageSlider v-bind:gallery="gallery" />
@@ -65,7 +66,8 @@ export default {
       })
     } else {
       this.fetchHomePageSlider(response => {
-        this.gallery = response.acf.slider_images
+        console.log(response)
+        this.gallery = response.gallery_images
         var timeout = setTimeout(() => {
           this.updateStore('gallerySlides', this.cE('home-gallery-image'))
           this.initHomeGallerySlider()

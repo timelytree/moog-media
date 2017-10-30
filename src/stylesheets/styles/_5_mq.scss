@@ -15,6 +15,11 @@
     top: $pad;
   }
 
+  .logo {
+    top: $pad;
+    left: $pad;
+  }
+
   #nav {
     right: $pad;
     #menu {
@@ -27,9 +32,10 @@
     bottom: $pad;
   }
 
-  .page-modal {
-    width: 960px;
-    left: calc(50% - 960px/2);
+  .page-modal, .project-nav {
+    width: calc(100% - #{$pad*2});
+    max-width: none;
+    left: $pad;
     margin-bottom: $pad;
   }
 }
@@ -52,6 +58,7 @@
   }
 
   #logo {
+    top: $pad;
     left: $pad;
   }
 
@@ -76,9 +83,9 @@
     bottom: $pad;
   }
 
-  .page-modal {
-    width: 720px;
-    left: calc(50% - 720px/2);
+  .page-modal, .project-nav {
+    width: calc(100% - #{$pad*2});
+    left: $pad;
     margin-bottom: $pad;
   }
 }
@@ -96,7 +103,9 @@
 @media only screen and (max-width: 737px) {
   $pad: 24px;
 
-  #logo {
+  .logo {
+    top: $pad;
+    left: $pad;
     width: 200px;
   }
 
@@ -123,15 +132,14 @@
     padding-top: 100px;
   }
 
-  .project-nav, .work-nav {
-    padding: 0 $pad;
+  .page-modal, .project-nav, .work-nav {
+    width: calc(100% - #{$pad*2});
+    left: $pad;
+    margin-bottom: $pad;
   }
 
   .page-modal {
-    width: calc(100vw - #{$pad*2});
-    left: $pad;
     top: 150px;
-    margin-bottom: $pad;
     .container {
       width: 100%;
     }
@@ -211,11 +219,11 @@
 @media only screen and (max-width: 415px) {
   $pad: 15px;
 
-  #logo, #nav {
+  .logo, #nav {
     top: $pad;
   }
 
-  #logo {
+  .logo {
     left: $pad;
   }
 
@@ -238,14 +246,18 @@
     bottom: $pad;
   }
 
-  .project-nav, .work-nav {
-    padding: 0 $pad;
+  .page-modal, .project-nav, .work-nav {
+    width: calc(100% - #{$pad*2});
+    left: $pad;
+    margin-bottom: $pad;
+  }
+
+  .project-nav-title {
+    font-size: 18px;
+    line-height: 18px;
   }
 
   .page-modal {
-    width: calc(100vw - #{$pad*2});
-    left: $pad;
-    margin-bottom: $pad;
     &.contact-container {
       top: 200px;
     }

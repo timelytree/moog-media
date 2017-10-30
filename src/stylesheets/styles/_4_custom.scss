@@ -26,13 +26,14 @@
   .project-video-slide, .project-intro-slide, .project-gallery-slide,
   .project-text-slide, .project-single-image-slide, .project-subtitle-slide,
   .project-press-slide, .project-banner-slide {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 50px;
-    padding-right: 50px;
-    &:first-child {
-      padding-top: 50px;
-    }
+    padding: 50px;
+    // padding-top: 25px;
+    // padding-bottom: 25px;
+    // padding-left: 50px;
+    // padding-right: 50px;
+    // &:first-child {
+    //   padding-top: 50px;
+    // }
     &:last-child {
       padding-bottom: 0;
     }
@@ -177,7 +178,7 @@
       bottom: 25px;
       left: 25px;
       padding: 15px 25px;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.85);
       h3, h4, a {
         color: black;
         font-weight: 600;
@@ -190,8 +191,65 @@
   }
 }
 
+/////////////////////////////////////////////////////////////////// White Theme
+//-----------------------------------------------------------------------------
+.whiteTheme {
+  background-color: white;
+  transition: 150ms;
 
+  #logo-white {
+    opacity: 0;
+  }
 
+  #logo-black {
+    opacity: 0.3;
+  }
+
+  #nav {
+    opacity: 0.3;
+    #menuB {
+      .button-black {
+        opacity: 1;
+      }
+      .button-white {
+        opacity: 0;
+      }
+    }
+  }
+
+  .videoWRAPPER, .home-gallery, #videoTimer {
+    transition: 150ms;
+    opacity: 0;
+  }
+
+  .page-overlay {
+    transition: 150ms;
+    background-color: transparent;
+  }
+
+  .project-modal {
+    transition: 150ms;
+    box-shadow: none;
+  }
+
+  .project-nav-title, .back-to-projects-button {
+    color: black;
+  }
+
+  .back-to-projects-button {
+    &:after {
+      transition: 150ms;
+      background-color: black;
+    }
+  }
+
+  .closeModalB {
+    img {
+      &:first-child { opacity: 0; }
+      &:last-child { opacity: 1; }
+    }
+  }
+}
 
 
 

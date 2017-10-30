@@ -6,9 +6,11 @@
         <router-link to="/"><img src="../assets/images/close_rounded_icon_white.svg" /></router-link>
       </div>
       <div class="page-modal container">
-        <div class="page-banner" :style="{ 'background-image': 'url(' + bannerImage + ')' }" ></div>
-        <div class="team-intro-text" v-html="introText"></div>
+        <!-- <div class="page-banner" :style="{ 'background-image': 'url(' + bannerImage + ')' }" ></div> -->
         <div class="page-body" v-html="body"></div>
+        <div class="team-intro-text">
+          <p v-for="item in introTextSplit" v-html="item" v-bind:class="[ item !== '' ? '' : 'hidden' ]"></p>
+        </div>
       </div>
     </div>
   </transition>
@@ -27,6 +29,12 @@ export default {
       introText: '',
       body: '',
       bannerImage: ''
+    }
+  },
+
+  computed: {
+    introTextSplit () {
+      return this.introText.split(/\r?\n/)
     }
   },
 

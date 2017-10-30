@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import VueAnalytics from 'vue-analytics'
 import router from './router'
+import VueMasonry from 'vue-masonry-css'
 import 'bootstrap/scss/bootstrap.scss'
 import './stylesheets/main.scss'
+
+Vue.use(VueMasonry)
 
 Vue.config.productionTip = false
 if (window.location.hostname !== 'localhost') {

@@ -107,7 +107,6 @@ export default {
     }
     // ///////////////////////// Initialize the player and player functionality
     var initPlayer = (videoId) => {
-      console.log(videoId)
       Store.player.load(videoId)
       Store.player.play()
       Store.player.setVolume(0)
@@ -192,6 +191,21 @@ export default {
     axios
       .get('http://67.207.85.161/moog/wp-json/wp/v2/features/105')
       .then(response => { cb(response.data) })
+  },
+  fetchProjectImages: function (cb, images) {
+    var imageItems = images.split(',')
+    var urlItems = []
+    for (var i = 0; i < imageItems.length; i++) {
+      var urlItem = 'include[]=' + imageItems[i] + ''
+      var space = '&'
+      urlItems.push(urlItem)
+      urlItems.push(space)
+    }
+    urlItems.push('per_page=50')
+    urlItems = urlItems.join('')
+    axios
+    .get('http://67.207.85.161/moog/wp-json/wp/v2/media?' + urlItems + '')
+    .then(response => { cb(response.data) })
   },
   // ------------------------- Get the closest parent element to a select child
   // --------------------------------------------------------------------------
