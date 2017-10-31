@@ -1,7 +1,7 @@
 TO DO
 - [] press links
 - [x] click page-overlay to close
-- [] click logo to go back home
+- [x] click logo to go back home
 
 # Utilities
 Vue Meta: https://github.com/declandewet/vue-meta#meta-object

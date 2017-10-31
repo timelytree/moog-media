@@ -2,8 +2,10 @@
   <div class="wrapper" id="app">
     <PreLoader v-if="loading" />
     <router-view></router-view>
-    <img id="logo-white" class="logo" src="./assets/images/logoMOOG_white.svg" />
-    <img id="logo-black" class="logo" src="./assets/images/logoMOOG_black.svg" />
+    <router-link to="/">
+      <img id="logo-white" class="logo" src="./assets/images/logoMOOG_white.svg" />
+      <img id="logo-black" class="logo" src="./assets/images/logoMOOG_black.svg" />
+    </router-link>
     <Navigation />
     <VideoTimer />
     <HomePageImageSlider v-bind:gallery="gallery" />
