@@ -1,11 +1,9 @@
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "asd" }] */
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "" }] */
 // import Vue from 'vue'
 import axios from 'axios'
 import Store from './Store.js'
 import YTPlayer from 'yt-player'
 import Flickity from 'flickity'
-// import jsonp from 'jsonp-promise'
-// import jsonp from 'jsonp'
 
 export default {
   // -------------------------------------------------------- Utility functions
@@ -15,6 +13,11 @@ export default {
   addC: (item, className) => { item.classList.add(className) },
   remC: (item, className) => { item.classList.remove(className) },
   gA: (item, att) => { return item.getAttribute('data-' + att + '') },
+  // ---------------------------------------------------------- Go to home page
+  // --------------------------------------------------------------------------
+  goToHome (e) {
+    if (e.target.classList[0] === 'page-overlay') { this.$router.push('/') }
+  },
   // -------------------------------------------------- Resize background video
   // --------------------------------------------------------------------------
   updateStore (key, value) {

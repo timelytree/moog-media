@@ -1,6 +1,6 @@
 <template>
   <transition name="overlay">
-    <div class="page-overlay" id="workPAGE">
+    <div class="page-overlay" id="workPAGE" v-on:click="goToHome">
       <WorkNav />
       <PageModal :projects="projects" />
     </div>

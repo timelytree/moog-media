@@ -1,6 +1,6 @@
 <template>
   <transition name="slide">
-    <div class="page-overlay" id="teamPAGE">
+    <div class="page-overlay" id="teamPAGE" v-on:click="goToHome">
       <div class="work-nav container">
         <div class="work-nav-title">Our Team</div>
         <router-link to="/"><img src="../assets/images/close_rounded_icon_white.svg" /></router-link>
