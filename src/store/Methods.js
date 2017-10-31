@@ -1,9 +1,11 @@
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "flickity" }] */
-
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "asd" }] */
+// import Vue from 'vue'
 import axios from 'axios'
 import Store from './Store.js'
 import YTPlayer from 'yt-player'
 import Flickity from 'flickity'
+// import jsonp from 'jsonp-promise'
+// import jsonp from 'jsonp'
 
 export default {
   // -------------------------------------------------------- Utility functions
@@ -192,6 +194,13 @@ export default {
       .get('http://67.207.85.161/moog/wp-json/wp/v2/features/105')
       .then(response => { cb(response.data) })
   },
+  fetchInstagramPosts: function (cb) {
+    axios
+      .get('https://igpi.ga/displacedseries/media/?count=20')
+      .then(response => { cb(response.data) })
+  },
+  // ----------------------------------------------------- Fetch project images
+  // --------------------------------------------------------------------------
   fetchProjectImages: function (cb, images) {
     var imageItems = images.split(',')
     var urlItems = []
@@ -204,8 +213,8 @@ export default {
     urlItems.push('per_page=50')
     urlItems = urlItems.join('')
     axios
-    .get('http://67.207.85.161/moog/wp-json/wp/v2/media?' + urlItems + '')
-    .then(response => { cb(response.data) })
+      .get('http://67.207.85.161/moog/wp-json/wp/v2/media?' + urlItems + '')
+      .then(response => { cb(response.data) })
   },
   // ------------------------- Get the closest parent element to a select child
   // --------------------------------------------------------------------------

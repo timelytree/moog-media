@@ -66,7 +66,6 @@ export default {
       })
     } else {
       this.fetchHomePageSlider(response => {
-        console.log(response)
         this.gallery = response.gallery_images
         var timeout = setTimeout(() => {
           this.updateStore('gallerySlides', this.cE('home-gallery-image'))

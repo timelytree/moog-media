@@ -387,11 +387,18 @@
   }
 }
 
-.project-images {
+.project-images, .project-instagram {
   width: 100%;
   img {
     width: 100%;
     margin-bottom: 5px;
+  }
+}
+
+.project-instagram {
+  .ig-caption {
+    margin-top: 5px;
+    margin-bottom: 15px;
   }
 }
 

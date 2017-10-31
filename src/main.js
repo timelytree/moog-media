@@ -5,10 +5,12 @@ import App from './App'
 import VueAnalytics from 'vue-analytics'
 import router from './router'
 import VueMasonry from 'vue-masonry-css'
+import VueJsonp from 'vue-jsonp'
 import 'bootstrap/scss/bootstrap.scss'
 import './stylesheets/main.scss'
 
 Vue.use(VueMasonry)
+Vue.use(VueJsonp)
 
 Vue.config.productionTip = false
 if (window.location.hostname !== 'localhost') {

@@ -20,8 +20,19 @@
             </div>
           </div>
         </div>
+        <div class="project-instagram" v-if="instagram">
+          <h1>Instagram</h1>
+          <div class="ig-container">
+            <masonry :cols="{ default: 4, 737: 2, 415: 1 }" :gutter="5">
+              <div v-for="(item, index) in instagram" :key="index">
+                <img :src="item.src" />
+                <p class="ig-caption" v-for="text in item.caption" v-html="text"></p>
+              </div>
+            </masonry>
+          </div>
+        </div>
         <div class="project-images" v-if="images">
-          <masonry :cols="{default: 2, 415: 1}" :gutter="5">
+          <masonry :cols="{ default: 2, 415: 1 }" :gutter="5">
             <div v-for="(image, index) in images" :key="index">
               <img :src="image.guid" />
             </div>
@@ -42,11 +53,16 @@
 
 <script>
 import Methods from '../store/Methods.js'
+import VueInstagram from 'vue-instagram'
 
 export default {
   name: 'PageProject',
 
   methods: Methods,
+
+  components: {
+    VueInstagram
+  },
 
   data () {
     return {
@@ -58,7 +74,8 @@ export default {
       projectDescription: '',
       logoSrc: '',
       images: {},
-      videos: false
+      videos: false,
+      instagram: false
     }
   },
 
@@ -101,7 +118,22 @@ export default {
       }
       this.images = response.image_gallery
       this.$parent.loading = false
-      console.log(response)
+      if (response.instagram_handle !== '') {
+        var handle = response.instagram_handle
+        this.fetchInstagramPosts(response => {
+          console.log(response)
+          var instaItems = {}
+          for (var i = 0; i < response.items.length; i++) {
+            var item = response.items[i]
+            instaItems[i] = {
+              src: item.images.standard_resolution.url,
+              caption: item.caption.text.split(/\r?\n/)
+            }
+          }
+          console.log(instaItems)
+          this.instagram = instaItems
+        }, handle)
+      }
     }, projectId)
   },
 
@@ -141,7 +173,7 @@ export default {
   }
 }
 
-.project-videos {
+.project-videos, .project-instagram {
   h1 {
     text-align: center;
     font-size: 34px;
@@ -150,7 +182,9 @@ export default {
     text-transform: uppercase;
     margin: 200px 0;
   }
+}
 
+.project-videos {
   .video-container {
     @include display-flex;
     @include flex-row;
@@ -177,6 +211,10 @@ export default {
       height: 100%;
     }
   }
+}
+
+.ig-container {
+  width: 100%;
 }
 </style>
 
