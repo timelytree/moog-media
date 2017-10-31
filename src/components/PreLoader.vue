@@ -1,6 +1,7 @@
 <template>
   <div id="pre-loader">
     <img src="../assets/images/preloader_white.svg" />
+    <img src="../assets/images/preloader_black.svg" />
   </div>
 </template>
 

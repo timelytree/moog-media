@@ -19,6 +19,12 @@
               <p v-for="item in projectDescription" v-html="item" v-bind:class="[ item !== '' ? '' : 'hidden' ]"></p>
             </div>
           </div>
+          <div class="social-icons">
+            <a :href="instagramLink" target="_blank" v-if="instagramLink"><img src="../assets/images/instagram_icon_black.svg" /></a>
+            <a :href="youtubeLink" target="_blank" v-if="youtubeLink"><img src="../assets/images/youtube_icon_black.svg" /></a>
+            <a :href="websiteLink" target="_blank" v-if="websiteLink"><img src="../assets/images/website_icon_black.svg" /></a>
+            <a :href="facebookLink" target="_blank" v-if="facebookLink"><img src="../assets/images/facebook_icon_black.svg" /></a>
+          </div>
         </div>
         <div class="project-instagram" v-if="instagram">
           <h1>Instagram</h1>
@@ -73,6 +79,10 @@ export default {
       seoDescription: '',
       projectDescription: '',
       logoSrc: '',
+      instagramLink: false,
+      youtubeLink: false,
+      websiteLink: false,
+      facebookLink: false,
       images: {},
       videos: false,
       instagram: false
@@ -113,6 +123,10 @@ export default {
       this.seoDescription = response.seo_description
       this.projectDescription = response.description.split(/\r?\n/)
       this.logoSrc = response.logo.guid
+      this.instagramLink = response.link_instagram
+      this.youtubeLink = response.link_youtube
+      this.websiteLink = response.link_website
+      this.facebookLink = response.link_facebook
       if (response.video_gallery !== '') {
         this.videos = response.video_gallery.replace(/[\n\r]+/g, '').replace(/\s/g, '').split(',')
       }
@@ -121,7 +135,6 @@ export default {
       if (response.instagram_handle !== '') {
         var handle = response.instagram_handle
         this.fetchInstagramPosts(response => {
-          console.log(response)
           var instaItems = {}
           for (var i = 0; i < response.items.length; i++) {
             var item = response.items[i]
@@ -130,7 +143,6 @@ export default {
               caption: item.caption.text.split(/\r?\n/)
             }
           }
-          console.log(instaItems)
           this.instagram = instaItems
         }, handle)
       }

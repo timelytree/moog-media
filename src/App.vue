@@ -7,7 +7,7 @@
     <Navigation />
     <VideoTimer />
     <HomePageImageSlider v-bind:gallery="gallery" />
-    <div class="videoWRAPPER">
+    <div class="videoWRAPPER home-video">
       <div id="videoOVERLAY"></div>
       <div id="videoPLAYER"></div>
     </div>
