@@ -12,6 +12,7 @@
         </div>
       </div>
       <div class="page-modal project-modal">
+        <!-- ////////////////////////////////////////////////// INTRO slide -->
         <div class="project-intro-slide">
           <img :src="logoSrc" class="project-logo" />
           <div class="fsn-text">
@@ -26,6 +27,13 @@
             <a :href="facebookLink" target="_blank" v-if="facebookLink"><img src="../assets/images/facebook_icon_black.svg" /></a>
           </div>
         </div>
+        <!-- ////////////////////////////////////////////////// PRESS slide -->
+        <div class="in-the-press" v-if="press">
+          <h1>In The Press</h1>
+          <div class="press-container" v-html="press">
+          </div>
+        </div>
+        <!-- ////////////////////////////////////////////// INSTAGRAM slide -->
         <div class="project-instagram" v-if="instagram">
           <h1>Instagram</h1>
           <div class="ig-container">
@@ -37,6 +45,7 @@
             </masonry>
           </div>
         </div>
+        <!-- ///////////////////////////////////////////////// IMAGES slide -->
         <div class="project-images" v-if="images">
           <masonry :cols="{ default: 2, 415: 1 }" :gutter="5">
             <div v-for="(image, index) in images" :key="index">
@@ -44,6 +53,7 @@
             </div>
           </masonry>
         </div>
+        <!-- ///////////////////////////////////////////////// VIDEOS slide -->
         <div class="project-videos" v-if="videos">
           <h1>Videos</h1>
           <div class="video-container">
@@ -85,7 +95,8 @@ export default {
       facebookLink: false,
       images: {},
       videos: false,
-      instagram: false
+      instagram: false,
+      press: false
     }
   },
 
@@ -116,6 +127,8 @@ export default {
     this.$parent.loading = true
     var projectId = this.$route.query.id
     this.fetchSingleProject(response => {
+      // console.log(response)
+      this.press = response.content.rendered
       this.title = response.title.rendered
       this.bannerImage = response.thumbnail.guid
       this.body = response.content.rendered
@@ -185,7 +198,7 @@ export default {
   }
 }
 
-.project-videos, .project-instagram {
+.project-videos, .project-instagram, .in-the-press {
   h1 {
     text-align: center;
     font-size: 34px;
@@ -193,6 +206,13 @@ export default {
     font-weight: 600;
     text-transform: uppercase;
     margin: 200px 0;
+  }
+}
+
+.in-the-press {
+  margin-bottom: 75px;
+  h1 {
+    margin-bottom: 75px;
   }
 }
 

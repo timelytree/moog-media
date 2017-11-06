@@ -411,6 +411,24 @@
   }
 }
 
+.in-the-press {
+  .fsn-text {
+    p {
+      @include flex-r;
+    }
+  }
+  a {
+    margin-right: 25px;
+    &:last-child {
+      margin-right: 0;
+    }
+    img {
+      height: auto;
+      width: 300px;
+    }
+  }
+}
+
 ////////////////////////////////////////////////////////////////// Contact page
 //-----------------------------------------------------------------------------
 .contact-container {

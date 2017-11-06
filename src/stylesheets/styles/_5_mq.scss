@@ -168,6 +168,15 @@
     width: 100%;
   }
 
+  .in-the-press .fsn-text p {
+    @include flex-c;
+    img {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 75px;
+    }
+  }
+
   #projectPAGE {
     // project-video-slide // project-intro-slide // project-gallery-slide
     // project-text-slide // project-single-image-slide // project-subtitle-slide (h2 tags)

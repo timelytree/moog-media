@@ -1,8 +1,3 @@
-TO DO
-- [] press links
-- [x] click page-overlay to close
-- [x] click logo to go back home
-
 # Utilities
 Vue Meta: https://github.com/declandewet/vue-meta#meta-object
 WP CORS: https://github.com/Shelob9/rest-all-cors
