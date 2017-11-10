@@ -149,11 +149,12 @@ export default {
         var handle = response.instagram_handle
         this.fetchInstagramPosts(response => {
           var instaItems = {}
-          for (var i = 0; i < response.items.length; i++) {
-            var item = response.items[i]
+          var items = response.user.media.nodes
+          for (var i = 0; i < items.length; i++) {
+            var item = items[i]
             instaItems[i] = {
-              src: item.images.standard_resolution.url,
-              caption: item.caption.text.split(/\r?\n/)
+              src: item.thumbnail_resources[2].src,
+              caption: item.caption.split(/\r?\n/)
             }
           }
           this.instagram = instaItems

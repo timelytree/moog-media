@@ -199,7 +199,7 @@ export default {
   },
   fetchInstagramPosts: function (cb) {
     axios
-      .get('https://igpi.ga/displacedseries/media/?count=20')
+      .get('https://igpi.ga/displacedseries/?__a=1')
       .then(response => { cb(response.data) })
   },
   // ----------------------------------------------------- Fetch project images
