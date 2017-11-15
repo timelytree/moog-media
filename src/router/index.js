@@ -18,7 +18,7 @@ export default new Router({
       component: PageHome
     },
     {
-      path: '/team',
+      path: '/about',
       name: 'PageTeam',
       component: PageTeam
     },
