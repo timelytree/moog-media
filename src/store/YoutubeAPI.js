@@ -8,7 +8,7 @@ export default {
     }
     if (!window['YTConfig']) {
       var YTConfig = {
-        'host': 'http://www.youtube.com'
+        'host': 'https://www.youtube.com'
       }
     }
     if (!YT.loading) {

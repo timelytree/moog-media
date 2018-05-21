@@ -166,35 +166,35 @@ export default {
   // --------------------------------------------------------------------------
   fetchAllProjects: function (cb) {
     axios
-      .get('http://67.207.85.161/moog/wp-json/wp/v2/projects/')
+      .get('https://67.207.85.161/moog/wp-json/wp/v2/projects/')
       .then(response => { cb(response.data) })
   },
   // ----------------------------------------------------- Fetch single project
   // --------------------------------------------------------------------------
   fetchSingleProject: function (cb, projectId) {
     axios
-      .get('http://67.207.85.161/moog/wp-json/wp/v2/projects/' + projectId + '')
+      .get('https://67.207.85.161/moog/wp-json/wp/v2/projects/' + projectId + '')
       .then(response => { cb(response.data) })
   },
   // -------------------------------------------------------- Fetch single page
   // --------------------------------------------------------------------------
   fetchSinglePage: function (cb, pageId) {
     axios
-      .get('http://67.207.85.161/moog/wp-json/wp/v2/pages/' + pageId + '')
+      .get('https://67.207.85.161/moog/wp-json/wp/v2/pages/' + pageId + '')
       .then(response => { cb(response.data) })
   },
   // --------------------------------------------------- Fetch home page slider
   // --------------------------------------------------------------------------
   fetchHomePageVideo: function (cb) {
     axios
-      .get('http://67.207.85.161/moog/wp-json/wp/v2/features/109')
+      .get('https://67.207.85.161/moog/wp-json/wp/v2/features/109')
       .then(response => { cb(response.data) })
   },
   // --------------------------------------------------- Fetch home page slider
   // --------------------------------------------------------------------------
   fetchHomePageSlider: function (cb) {
     axios
-      .get('http://67.207.85.161/moog/wp-json/wp/v2/features/105')
+      .get('https://67.207.85.161/moog/wp-json/wp/v2/features/105')
       .then(response => { cb(response.data) })
   },
   fetchInstagramPosts: function (cb) {
@@ -216,7 +216,7 @@ export default {
     urlItems.push('per_page=50')
     urlItems = urlItems.join('')
     axios
-      .get('http://67.207.85.161/moog/wp-json/wp/v2/media?' + urlItems + '')
+      .get('https://67.207.85.161/moog/wp-json/wp/v2/media?' + urlItems + '')
       .then(response => { cb(response.data) })
   },
   // ------------------------- Get the closest parent element to a select child
