@@ -166,40 +166,41 @@ export default {
   // --------------------------------------------------------------------------
   fetchAllProjects: function (cb) {
     axios
-      .get('https://67.207.85.161/moog/wp-json/wp/v2/projects/')
+      .get('https://redwoodapps.com/moog/wp-json/wp/v2/projects/')
       .then(response => { cb(response.data) })
   },
   // ----------------------------------------------------- Fetch single project
   // --------------------------------------------------------------------------
   fetchSingleProject: function (cb, projectId) {
     axios
-      .get('https://67.207.85.161/moog/wp-json/wp/v2/projects/' + projectId + '')
+      .get('https://redwoodapps.com/moog/wp-json/wp/v2/projects/' + projectId + '')
       .then(response => { cb(response.data) })
   },
   // -------------------------------------------------------- Fetch single page
   // --------------------------------------------------------------------------
   fetchSinglePage: function (cb, pageId) {
     axios
-      .get('https://67.207.85.161/moog/wp-json/wp/v2/pages/' + pageId + '')
+      .get('https://redwoodapps.com/moog/wp-json/wp/v2/pages/' + pageId + '')
       .then(response => { cb(response.data) })
   },
   // --------------------------------------------------- Fetch home page slider
   // --------------------------------------------------------------------------
   fetchHomePageVideo: function (cb) {
     axios
-      .get('https://67.207.85.161/moog/wp-json/wp/v2/features/109')
+      .get('https://redwoodapps.com/moog/wp-json/wp/v2/features/109')
       .then(response => { cb(response.data) })
+      .catch(error => { console.log(error) })
   },
   // --------------------------------------------------- Fetch home page slider
   // --------------------------------------------------------------------------
   fetchHomePageSlider: function (cb) {
     axios
-      .get('https://67.207.85.161/moog/wp-json/wp/v2/features/105')
+      .get('https://redwoodapps.com/moog/wp-json/wp/v2/features/105')
       .then(response => { cb(response.data) })
   },
   fetchInstagramPosts: function (cb) {
     axios
-      .get('https://igpi.ga/displacedseries/?__a=1')
+      .get('https://redwoodapps.comacedseries/?__a=1')
       .then(response => { cb(response.data) })
   },
   // ----------------------------------------------------- Fetch project images
@@ -216,7 +217,7 @@ export default {
     urlItems.push('per_page=50')
     urlItems = urlItems.join('')
     axios
-      .get('https://67.207.85.161/moog/wp-json/wp/v2/media?' + urlItems + '')
+      .get('https://redwoodapps.com/moog/wp-json/wp/v2/media?' + urlItems + '')
       .then(response => { cb(response.data) })
   },
   // ------------------------- Get the closest parent element to a select child
