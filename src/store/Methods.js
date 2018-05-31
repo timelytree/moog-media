@@ -99,6 +99,7 @@ export default {
     var createPlayer = () => {
       Store.player = new YTPlayer('#videoPLAYER', {
         autoplay: true,
+        mute: true,
         captions: false,
         controls: false,
         keyboard: false,
@@ -113,7 +114,20 @@ export default {
     // ///////////////////////// Initialize the player and player functionality
     var initPlayer = (videoId) => {
       Store.player.load(videoId)
-      Store.player.play()
+      var buildUrl = (src) => {
+        var asd = src.split('?')
+        asd.splice(1, 0, '?mute=1&')
+        asd = asd.join('')
+        this.E('videoPLAYER').src = asd
+      }
+      var src = false
+      var interval = setInterval(() => {
+        src = this.E('videoPLAYER').src
+        if (src) {
+          buildUrl(src)
+          clearInterval(interval)
+        }
+      }, 100)
       Store.player.setVolume(0)
       Store.player.on('playing', () => {
         this.updateStore('videoLength', Store.player.getDuration())
