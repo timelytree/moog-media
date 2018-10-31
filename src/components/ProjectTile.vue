@@ -5,7 +5,7 @@
         <div class="project-tile-title" v-html="project.title.rendered"></div>
         <div class="project-tile-status" v-html="project.current_status"></div>
       </div>
-      <div class="project-tile-thumbnail" :style="{ 'background-image': 'url(https://redwoodapps.com/moog/wp-content/uploads/' + project.thumbnail.guid.split('uploads/')[1] + ')' }"></div>
+      <div class="project-tile-thumbnail" :style="{ 'background-image': 'url(http://67.207.85.161/moog/wp-content/uploads/' + project.thumbnail.guid.split('uploads/')[1] + ')' }"></div>
     </router-link>
   </transition>
 </template>
