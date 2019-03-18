@@ -7,7 +7,7 @@
         <img id="logo-white" class="logo" src="./assets/images/logoMOOG_white.svg" />
         <img id="logo-black" class="logo" src="./assets/images/logoMOOG_black.svg" />
       </div>
-      <div class="tagline">A Conscious Media Company</div>
+      <!-- <div class="tagline">A Conscious Media Company</div> -->
       <div class="emails">
         <a class="email" href="mailto:narina@moogmedia.ca">narina@moogmedia.ca</a>
         <span>|</span>
@@ -114,6 +114,7 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
+  padding-top: 25rem;
   background: rgba(0, 0, 0, 0);
   z-index: 1000;
   transition: 10000ms;
@@ -138,7 +139,6 @@ export default {
 }
 
 #logo {
-  // position: relative;
   z-index: 100;
 }
 
@@ -176,5 +176,9 @@ export default {
 
 #video-timer {
   z-index: 1000;
+  opacity: 1;
+  @media only screen and (min-width: 1024px) {
+    opacity: 0;
+  }
 }
 </style>
