@@ -2,11 +2,23 @@
   <div class="wrapper" id="app">
     <PreLoader v-if="loading" />
     <router-view></router-view>
-    <router-link to="/">
+    <div :class="['home-content', videoLoaded ? 'bg-engage' : '']">
+      <div id="logo">
+        <img id="logo-white" class="logo" src="./assets/images/logoMOOG_white.svg" />
+        <img id="logo-black" class="logo" src="./assets/images/logoMOOG_black.svg" />
+      </div>
+      <div class="tagline">A Conscious Media Company</div>
+      <div class="emails">
+        <a class="email" href="mailto:narina@moogmedia.ca">narina@moogmedia.ca</a>
+        <span>|</span>
+        <a class="email" href="mailto:nauras@moogmedia.ca">nauras@moogmedia.ca</a>
+      </div>
+    </div>
+    <!-- <router-link to="/">
       <img id="logo-white" class="logo" src="./assets/images/logoMOOG_white.svg" />
       <img id="logo-black" class="logo" src="./assets/images/logoMOOG_black.svg" />
-    </router-link>
-    <Navigation />
+    </router-link> -->
+    <!-- <Navigation /> -->
     <VideoTimer />
     <HomePageImageSlider v-bind:gallery="gallery" />
     <div class="videoWRAPPER home-video">
@@ -91,6 +103,78 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1000;
+  transition: 10000ms;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.75));
+    opacity: 0;
+    z-index: 50;
+    transition: 10000ms;
+  }
+  &.bg-engage {
+    &:before {
+      transition: 10000ms;
+      opacity: 1;
+    }
+  }
+}
 
+#logo {
+  // position: relative;
+  z-index: 100;
+}
+
+.logo {
+  position: static;
+  width: 25rem;
+  max-width: 20rem;
+  margin-bottom: 1rem;
+}
+
+#logo-black {
+  display: none;
+}
+
+.tagline {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  z-index: 100;
+}
+
+.emails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  span {
+    color: white;
+    margin: 0 1rem;
+  }
+}
+
+.email {
+  z-index: 100;
+}
+
+#video-timer {
+  z-index: 1000;
+}
 </style>
