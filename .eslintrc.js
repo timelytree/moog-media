@@ -1,27 +1,35 @@
-// http://eslint.org/docs/user-guide/configuring
-
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
-  },
   env: {
     browser: true,
+    node: true
   },
-  // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-  extends: 'standard',
-  // required to lint *.vue files
-  plugins: [
-    'html'
+  parserOptions: {
+    parser: 'babel-eslint',
+    sourceType: 'module'
+  },
+  extends: [
+    '@nuxtjs',
+    'plugin:nuxt/recommended',
+    'plugin:vue/essential'
   ],
-  // add your custom rules here
-  'rules': {
-    // allow paren-less arrow functions
-    'arrow-parens': 0,
-    // allow async-await
-    'generator-star-spacing': 0,
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+  // Add your custom rules here
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'vue/html-closing-bracket-newline': ['error', {
+      'singleline': 'never',
+      'multiline': 'never'
+    }],
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/singleline-html-element-content-newline': ['error', {
+      'ignoreWhenNoAttributes': true
+    }],
+    'no-trailing-spaces': ['error', {
+      'skipBlankLines': true
+    }],
+    'vue/html-self-closing': 'off',
+    'vue/no-v-html': 'off',
+    'no-lonely-if': 'off'
   }
 }
