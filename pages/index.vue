@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <SiteNav />
+    <SiteHeader />
 
     <Project
       v-for="project in projectList"
@@ -27,13 +27,13 @@ import {
 
 import Api from '@/api'
 
-import SiteNav from '@/components/SiteNav'
+import SiteHeader from '@/components/SiteHeader'
 import Project from '@/components/Project'
 import SiteFooter from '@/components/SiteFooter'
 
 export default {
   components: {
-    SiteNav,
+    SiteHeader,
     Project,
     SiteFooter
   },
@@ -50,9 +50,11 @@ export default {
     const navigationList = await Api.getNavigationList()
     const siteOptions = await Api.getSiteOptions()
     const projectList = await Api.getAllCptPosts('project')
+    const page = await Api.getSinglePage('home')
     store.dispatch('navigation/setNavigationList', navigationList)
     store.dispatch('global/setSiteOptions', siteOptions)
     store.dispatch('posts/setProjectList', projectList.posts)
+    store.dispatch('posts/setCurrentPage', page)
   },
 
   mounted () {
@@ -62,7 +64,6 @@ export default {
     const AMOUNTX = 50
     const AMOUNTY = 50
     let container = null
-    // let stats = null
     let camera = null
     let scene = null
     let renderer = null

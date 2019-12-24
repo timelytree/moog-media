@@ -13,14 +13,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   computed: {
-    ...mapGetters({
-      navigationList: 'navigation/navigationList',
-      siteOptions: 'global/siteOptions'
-    }),
     headerMenu () {
       return this.$getMenu('Header Menu')
     }

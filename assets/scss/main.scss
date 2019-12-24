@@ -26,8 +26,8 @@ html, body {
   line-height: 1.6;
   letter-spacing: 0px;
   overflow: hidden;
-  ::-moz-selection { background: $mineShaft; color: white; }
-  ::selection { background: $mineShaft; color: white; }
+  ::-moz-selection { background: white; color: black; }
+  ::selection { background: white; color: black; }
   &.no-scroll {
     overflow-y: hidden;
   }
@@ -121,7 +121,7 @@ input[type=week] {
     font-size: inherit;
     font-weight: 400;
     font-family: inherit;
-    color: $mineShaft;
+    color: white;
   }
   &:hover, &:active, &:focus {
     background-color: transparent;
@@ -162,7 +162,7 @@ li {
 
 a,
 button, .button {
-  color: $mineShaft;
+  color: inherit;
   font-family: inherit;
   outline: none;
   text-decoration: none;
@@ -171,7 +171,6 @@ button, .button {
   &:active, &:focus, &:hover {
     transition: 250ms;
     outline: none;
-    color: $mineShaft;
   }
 }
 
