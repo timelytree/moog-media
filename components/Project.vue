@@ -37,3 +37,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+$w: 1.25rem;
+
+.project {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: calc(33.333% - #{$w}/3);
+  height: 100%;
+  margin-right: $w;
+  display: inline-block;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+</style>

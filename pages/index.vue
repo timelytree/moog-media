@@ -3,10 +3,12 @@
 
     <SiteHeader />
 
-    <Project
-      v-for="project in projectList"
-      :key="project.ID"
-      :project="project" />
+    <section id="project-list">
+      <Project
+        v-for="project in projectList"
+        :key="project.ID"
+        :project="project" />
+    </section>
 
     <SiteFooter />
 
@@ -88,15 +90,15 @@ export default {
 
       // ///////////////////////////////////////////////////////////// Particles
       particles = []
-      const PI2 = Math.PI * 2
+      // const PI2 = Math.PI * 2
       const geometry = new Geometry()
       const material = new SpriteMaterial({
-        color: 0xFFFFFF,
-        program (context) {
-          context.beginPath()
-          context.arc(0, 0, 0.4, 0, PI2, true)
-          context.fill()
-        }
+        color: 0xFFFFFF
+        // program (context) {
+        //   context.beginPath()
+        //   context.arc(0, 0, 0.4, 0, PI2, true)
+        //   context.fill()
+        // }
       })
 
       let i = 0
@@ -192,5 +194,14 @@ export default {
 .container {
   position: relative;
   z-index: 10;
+}
+
+#project-list {
+  width: 100vw;
+  height: calc(100vh - #{$siteNavigationHeight} - #{$siteFooterHeight});
+  padding: 1.25rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 </style>

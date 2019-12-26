@@ -9,6 +9,6 @@
 
 <style lang="scss" scoped>
 #footer {
-  
+  height: $siteFooterHeight;
 }
 </style>
