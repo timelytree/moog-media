@@ -198,10 +198,17 @@ export default {
 
 #project-list {
   width: 100vw;
-  height: calc(100vh - #{$siteNavigationHeight} - #{$siteFooterHeight});
-  padding: 1.25rem;
+  height: calc(100vh - #{$siteNavigationHeight} - #{$siteFooterHeight} - 2.5rem);
+  padding: 0 1.25rem;
+  margin: 1.25rem 0;
   overflow-y: hidden;
   overflow-x: scroll;
   white-space: nowrap;
+  /deep/ &:hover {
+    .project .overlay {
+      transition: 400ms ease-in-out;
+      opacity: 0.9;
+    }
+  }
 }
 </style>
