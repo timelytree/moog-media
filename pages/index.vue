@@ -12,6 +12,8 @@
 
     <AboutSection />
 
+    <ContactSection />
+
     <SiteFooter />
 
   </div>
@@ -34,6 +36,7 @@ import Api from '@/api'
 import SiteHeader from '@/components/SiteHeader'
 import Project from '@/components/Project'
 import AboutSection from '@/components/AboutSection'
+import ContactSection from '@/components/ContactSection'
 import SiteFooter from '@/components/SiteFooter'
 
 export default {
@@ -41,6 +44,7 @@ export default {
     SiteHeader,
     Project,
     AboutSection,
+    ContactSection,
     SiteFooter
   },
 

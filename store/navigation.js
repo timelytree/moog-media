@@ -1,6 +1,6 @@
 export const state = () => ({
   navigationList: [],
-  secondarySection: 'about-section' // About or Contact Sections
+  secondarySection: 'contact-section' // About or Contact Sections
 })
 
 export const getters = {
@@ -18,6 +18,9 @@ export const actions = {
 }
 
 export const mutations = {
+  SET_NAVIGATION_LIST (state, navigationList) {
+    state.navigationList = navigationList
+  },
   SET_SECONDARY_SECTION (state, secondarySection) {
     state.secondarySection = secondarySection
   }
