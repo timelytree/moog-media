@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div :class="['container', secondarySection ? secondarySection : '']">
 
     <SiteHeader />
 
@@ -9,6 +9,8 @@
         :key="project.ID"
         :project="project" />
     </section>
+
+    <AboutSection />
 
     <SiteFooter />
 
@@ -31,18 +33,21 @@ import Api from '@/api'
 
 import SiteHeader from '@/components/SiteHeader'
 import Project from '@/components/Project'
+import AboutSection from '@/components/AboutSection'
 import SiteFooter from '@/components/SiteFooter'
 
 export default {
   components: {
     SiteHeader,
     Project,
+    AboutSection,
     SiteFooter
   },
 
   computed: {
     ...mapGetters({
       navigationPanel: 'navigation/navigationPanel',
+      secondarySection: 'navigation/secondarySection',
       siteTheme: 'global/siteTheme',
       projectList: 'posts/projectList'
     })
@@ -194,6 +199,32 @@ export default {
 .container {
   position: relative;
   z-index: 10;
+  &.about-section {
+    #project-list,
+    #contact-section {
+      transition: 250ms ease-in-out;
+      transform: scale(0.9);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+  }
+  &.contact-section {
+    #project-list,
+    #about-section {
+      transition: 250ms ease-in-out;
+      transform: scale(0.9);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+  }
+}
+
+#project-list,
+#about-section,
+#contact-section {
+  transition: 250ms ease-in-out;
 }
 
 #project-list {
