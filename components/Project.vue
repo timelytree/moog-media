@@ -5,7 +5,7 @@
 
     <div class="overlay"></div>
 
-    <div class="content">
+    <div ref="content" class="content">
       <div class="title">
         {{ name }}
       </div>
@@ -167,11 +167,11 @@ $w: 1.25rem;
       opacity: 0 !important;
     }
     .content {
-      transform: scale(1);
+      transform: translateY(0);
       opacity: 1;
     }
     .bg-img {
-      transform: scale(0.9);
+      transform: translateY(-100%);
       opacity: 0;
     }
   }
@@ -203,6 +203,7 @@ $w: 1.25rem;
   color: $mineShaft;
   padding: 2rem;
   padding-bottom: 0;
+  transform: translateY(100%);
   z-index: 30;
 }
 
